@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'btvideoweb';
+$db['default']['username'] = 'jokerweb';
 $db['default']['password'] = 'ilovehk8';
-$db['default']['database'] = 'btvideoweb';
+$db['default']['database'] = 'jokerweb';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = 'bt_';
 $db['default']['pconnect'] = TRUE;

@@ -6,7 +6,7 @@ defined('BASEPATH') || exit('Forbidden');
 */
 class Memcache{
   private $_memcached;	// Holds the memcached object
-  public $pre = 'btv';
+  public $pre = 'jok';
   protected $_memcache_conf = array(
 			      'default' => array(
 			      'hostname'=> '127.0.0.1',

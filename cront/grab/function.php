@@ -57,15 +57,7 @@ function getTagpair(&$str,&$string,$head,$end,$same){
 		
 }
 */
-function updateCateatotal(){
- global $model;
-  return $model->updateCateatotal();
-}
 
-function getsubcatelist(&$subcate){
-  global $model;
-  $subcate=$model->getsubcatelist();
-}
 
 function getlastgrabinfo($mode=1,$config=array()){
   global $lastgrab,$cateid,$pageno;
@@ -84,42 +76,11 @@ function getlastgrabinfo($mode=1,$config=array()){
   return true;
 }
 
-function getCatearticle($pid=0){
-  if(!$pid){
-    return false;
-  }
-  global $model,$_root,$cid;
-  //$flag=getlastgrabinfo();
-  
-  $cateList=$model->getCateInfoBypid($pid);
-  foreach($cateList as $cate){
-    if($cate['id']!=$cateid &&$flag){
-         continue;
-    }
-    if($cate['id']==$cateid){
-       $flag=false;
-    }
-    $cateurl=$_root.$cate['url'];
-    $cid=$cate['id'];
-    $status = getinfolist($cateurl);
-    if(6 == $status){
-       break;
-    }
-sleep(30);
-  }
-}
-
-function getSubCatearticle($cate){
-   global $model,$_root,$cid;
-   $cateurl=$_root.$cate['oname'];
-   $cid=$cate['id'];
-   getinfolist($cateurl);
-}
 
 function getAllcate(){
   global $model,$_root;
-  $html=getHtml($_root);
-  preg_match_all('#<li id="menu-item-\d+" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-\d+"><a href="http://www.vvtor.com/([^"]+)">([^<]+)</a></li>#Uis',$html,$match,PREG_SET_ORDER);
+  $html=getHtml($_root.'Keyword.htm');
+  preg_match_all('#<td width="119">&nbsp;&nbsp;<a href="/list29_1.htm" target="_self" class="user_14">\s+爆笑男女\(\d+\)</a>#Uis',$html,$match,PREG_SET_ORDER);
   $pcate=$match;
 //var_dump($pcate);exit;
   foreach($pcate as $pc){
@@ -131,14 +92,15 @@ function getAllcate(){
 sleep(2);
   }
 }
+/*
 function getinfolist(&$cateurl){
   global $model,$psize,$pageno,$action,$_root,$cid;
   for($i=1;$i<4;$i++){
 //通过 atotal计算i的值
     $ps = $i == 1?'':'/page/'.$i;
     $html=getHtml($cateurl.$ps);
-    preg_match_all('#<a class="entry-thumb lazyload" href="http://www\.vvtor\.com/([^"]+)" title="([^"]+)" rel="bookmark" target="_blank"><img class="" src="http://www\.vvtor\.com/wordpress/wp-content/themes/NewsPro2/timthumb\.php\?src=([^&]+)&amp;h=130&amp;w=100&amp;zc=1" alt="([^"]+)" /></a>#Uis',$html,$matchs,PREG_SET_ORDER);
-//echo '<pre>';var_dump($matchs);exit;
+    preg_match_all('#<td width="\d+" align="left"><a href="([^"]+)" class="main_\d+" target="_blank" >([^<]+)</a></td>#Uis',$html,$matchs,PREG_SET_ORDER);
+echo '<pre>';var_dump($matchs);exit;
     if(empty($matchs)){
       echo ('Cate list Failed '.$cateurl."/第{$i}页\r\n");
       return 6;
@@ -210,6 +172,7 @@ function getinfodetail(&$data){
   }
   echo "添加成功! $aid \r\n";
 }
+*/
 
 function getHtml($url){
   $curl = curl_init();

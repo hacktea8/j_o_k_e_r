@@ -100,9 +100,15 @@ class Model{
     if(!$data){
        return false;
     }
-    $contents = $this->copy_array($data,array('downurl','keyword','downurl','intro'));
+    $contents = $this->copy_array($data,array('keyword','intro'));
     $head = $this->copy_array($data,array('ptime','utime','cid','thum','name','ourl'));
-    $sql=$this->db->insert_string($this->db->getTable('emule_article'),$head);
+    if(!$head['cid']){
+      $head['cid'] = $this->addCateByname($data['cname']);
+    }
+    if(!$head['cid']){
+      die("Get Cid Null Url: $head[ourl]\n");
+    }
+    $sql = $this->db->insert_string($this->db->getTable('emule_article'),$head);
     $this->db->query($sql);
     $id = $this->db->insert_id();
     if(!$id){
@@ -112,7 +118,24 @@ class Model{
     $table = sprintf("emule_article_content%d",$id%10);
     $sql=$this->db->insert_string($this->db->getTable($table),$contents);
     $this->db->query($sql);
+    $this->updateArticleNextAndPre(array('id'=>$id,'cid'=>$head['cid']));
     return $id;
+  }
+  function updateArticleNextAndPre($data){
+    if(empty($data)){
+       return 0;
+    }
+    $table = $this->db->getTable('emule_article');
+    $sql = sprintf("SELECT `id` FROM %s WHERE `id`!=%d AND `cid`=%d ORDER BY `id` DESC LIMIT 1",$table,$data['id'],$data['cid']);
+    $preRow = $this->db->row_array($sql);
+    if(empty($preRow)){
+      return 0;
+    }
+    $sql = $this->db->update_string($table,array('next_aid'=>$data['id']),array('id'=>$preRow['id']));
+    $this->db->query($sql);
+    $sql = $this->db->update_string($table,array('pre_aid'=>$preRow['id']),array('id'=>$data['id']));
+    $this->db->query($sql);
+    return 1;
   }
   function getArticleList($page = 1, $limit = 100){
     $sql = sprintf('SELECT `id` FROM %s LIMIT %d,%d',$this->db->getTable('emule_article'),($page - 1)*$limit,$limit);

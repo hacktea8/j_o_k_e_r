@@ -19,10 +19,10 @@ class DB_MYSQL{
   var $errno   = 0;
   var $reporterror = 1;
 
-  var $usepconnect = 1;  //使用 pconnect
+  var $usepconnect = 0;  //使用 pconnect
   var $num_rows = 0;
 
-  public function  __construct($server = "localhost",$user = "btvideoweb",$password = "ilovehk8",$database = "btvideoweb"){
+  public function  __construct($server = "localhost",$user = "jokerweb",$password = "ilovehk8",$database = "jokerweb"){
     $this->connect($server,$user,$password,$database);
     mysql_query("set names utf8");
   }
