@@ -1,0 +1,83 @@
+@charset "utf-8";
+/* 热门笑话样式 */
+
+body {font:12px Tahoma;margin:20 0 0 0px; padding:0;background:#FFF;line-height: 22px; color:#666;background-color:#FFFFFF;}
+
+/*笑话分类*/
+.main_title{font-size:14px;	color:#333;	font-weight: bold;}
+a.main_title:hover {color:#ffffff;}	
+.left_title{font-size:14px;	text-align: left;color:#4EAA00;	padding:3px 0 0 6px;font-weight: bold;background-color: #EFFFE2;border: 1px solid #CEEFB1;}
+.p6{ padding:6px;}
+.left_4bh{font-size:14px;color:#4EAA00;	padding:1px;background-color: #F5F5F5;border: 1px solid #D8D8D8;}	
+.user{font-size:12px;color:#4EAA00;}
+a.user:link {color:#4EAA00;}
+a.user:visited {color:#4EAA00;}
+a.user:active {	color:#4EAA00;}
+a.user:hover {color:orange;}
+
+.user_14{font-size:14px;color:#4EAA00;line-height: 30px;}
+a.user_14:link {color:#4EAA00;}
+a.user_14:visited {color:#4EAA00;}
+a.user_14:hover {color:orange;}
+a.user_14:active {color:#4EAA00;}
+
+.main_14 {height:26px;padding:6px;font-size: 14px;line-height: 26px;color:#528c00;}
+a.main_14:link {color:#528c00;}
+a.main_14:hover {color:#ff3300;}
+a.main_14:visited {color:#666666;}
+
+
+/*笑话分类*/
+
+a:link,a:visited,active {color:#333;text-decoration: none;}
+a:hover{ color:orange;}
+
+.input{	font-size:14px;	color:#000;	background-color: #fff;	border: 1px solid #D8D8D8;line-height: 22px;}
+
+.top_txt{font-size:12px;color:#000;font-style: normal;font-weight: normal;}
+
+.top_navup{font-size:14px;color:#ffffff;font-weight: bold;}
+a.top_navup:link {color:#ffffff;}
+a.top_navup:visited {color:#ffffff;}
+a.top_navup:hover {color:#ffff00;}
+a.top_navup:active {color:#ffffff;}
+
+.nav {padding:0;}
+.top_nav{font-size:14px;color:#4EAA00;font-weight: bold;}
+
+a.top_nav:link {color:#4EAA00;text-decoration: none;}
+a.top_nav:visited {	color:#4EAA00;text-decoration: none;}
+a.top_nav:hover {color:#FF6600;}
+a.top_nav:active {color:#4EAA00;}
+
+.footer {font-size: 12px;}
+.p6ud{ padding:6px 0 6px 0;}
+.orang{	font-size:14px;color:#FF6600;text-decoration: none;}
+a.orang:link {font-size:14px;color:#FF6600;	text-decoration: none;}
+a.orang:visited {font-size:14px;color:#FF6600;text-decoration: none;}
+a.orang:active {font-size:14px;	color:#FF6600;text-decoration: none;}
+a.orang:hover {	font-size:14px;	color:#000000;text-decoration: underline;}
+
+.black12{	font-size:12px;color:#666;text-decoration: none;}
+a.black12:link {font-size:12px;color:#2a9615;	text-decoration: none;}
+a.black12:visited {font-size:12px;color:#2a9615;text-decoration: none;}
+a.black12:active {font-size:12px;	color:#2a9615;text-decoration: none;}
+a.black12:hover {	font-size:12px;	color:#ff0000;text-decoration: underline;}
+
+
+.pic4b {border: 1px solid #cccccc;}
+.pic4b_up {	border: 2px dashed #006600;}
+.4b_white {border: 1px dashed #FFFFFF;}
+
+
+/*页码定义*/
+.next_page {font-size:12px; vertical-align:middle; text-align:left; height:30px; line-height:30px; padding-top:8px; padding-left:8px;}
+.next_page a {padding:3px 5px; border:1px solid #ccc; line-height:26px; vertical-align:middle; text-decoration:none;font-size:14px;}
+.next_page a:visited {padding:3px 5px; border:1px solid #ccc; line-height:26px; vertical-align:middle; text-decoration:none;font-size:14px;}
+.next_page a:active {padding:3px 5px; border:1px solid #ccc; line-height:26px; vertical-align:middle; text-decoration:none;font-size:14px;}
+.next_page a:hover {border:1px solid #ccc; background:#528c00; color:#FFFFFF;font-size:14px;}
+.bg{background:#e6efe8;color:#FF0000;padding:3px 7px; border:1px solid #ccc; line-height:26px; text-decoration:none;}
+/*页码定义*/
+
+.ad360_280{float:right; OVERFLOW-X: auto; margin-top:7px; margin-left:8px;height:312px;}
+

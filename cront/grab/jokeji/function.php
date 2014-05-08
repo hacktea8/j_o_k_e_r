@@ -2,7 +2,7 @@
 
 function getinfolist(){
   global $model,$_root;
-  for($i=80;;$i++){
+  for($i=1;$i<11;$i++){
 //通过 atotal计算i的值
     $cateurl = $_root.'keyword.asp?MaxPerPage=22&listtype=title&cid=0&me_page='.$i;
     $html=getHtml($cateurl);
