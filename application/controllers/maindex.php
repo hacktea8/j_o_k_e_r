@@ -134,7 +134,6 @@ class Maindex extends Usrbase {
     $data = $this->emulemodel->getEmuleTopicByAid($aid,$this->userInfo['uid'], $this->userInfo['isadmin']);
     $data['info']['ptime']=date('Y:m:d', $data['info']['ptime']);
     $data['info']['utime'] = date('Y/m/d', $data['info']['utime']);
-    $this->_rewrite_list_url($data['postion']);
     $this->_rewrite_article_url($data['info']);
     $data['info'] = $data['info'][0];
     $data['info']['fav'] = 0;
@@ -151,7 +150,7 @@ class Maindex extends Usrbase {
     $keywords = $data['info']['name'].','.$kw.$default_seo;
     $title = $data['info']['name'];
     //$data['info']['intro'] = str_replace('www.ed2kers.com',$this->viewData['domain'],$data['info']['intro']);
-    $data['info']['intro'] = str_replace(array('<img </td>','IMG_API_URL='),array('<img ',$this->showimgapi),$data['info']['intro']);
+    #$data['info']['intro'] = str_replace(array('<img </td>','IMG_API_URL='),array('<img ',$this->showimgapi),$data['info']['intro']);
     // not VIP Admin check verify
     $emu_aid = isset($_COOKIE['hk8_verify_topic_dw'])?strcode($_COOKIE['hk8_verify_topic_dw'],false):'';
     $emu_aid = explode("\t",$emu_aid);

@@ -201,6 +201,9 @@ class emuleModel extends baseModel{
 
   public function getEmuleTopicByAid($aid,$uid=0,$isadmin=false){
      $where = '';
+     if(!$aid){
+        return false;
+     }
      if($uid && !$isadmin)
        $where = sprintf(' AND `uid`=%d LIMIT 1',$uid);
 
@@ -208,11 +211,27 @@ class emuleModel extends baseModel{
      $sql = sprintf('SELECT %s FROM %s as a LEFT JOIN %s as ac ON (a.id=ac.id) WHERE a.id =%d  %s',$this->_datatopicStruct,$this->db->dbprefix('emule_article'),$this->db->dbprefix($table),$aid,$where);
      $data = array();
      $data['info'] = $this->db->query($sql)->row_array();
+     if(empty($data['info'])){
+       return array();
+     }
      $data['info']['url'] = $this->get_link('topic','',$data['info']['id']);
-     $data['postion'] = $this->getsubparentCate($data['info']['cid']);
+     $data['info']['preurl'] = $this->get_link('topic','',$data['info']['pre_aid']);
+     $data['info']['nexturl'] = $this->get_link('topic','',$data['info']['next_aid']);
+     $tmp = $this->getTopicBaseInfo($data['info']['pre_aid']);;
+     $data['info']['pretitle'] = $tmp['title'];
+     $tmp = $this->getTopicBaseInfo($data['info']['next_aid']);;
+     $data['info']['nextitle'] = $tmp['title'];
      return $data;
   }
-
+  public function getTopicBaseInfo($aid){
+     if(!$aid){
+        return false;
+     }
+     $where = '';
+     $sql = sprintf('SELECT `title` FROM %s WHERE id =%d  %s',$this->db->dbprefix('emule_article'),$aid,$where);
+     $data = $this->db->query($sql)->row_array();
+     return $data;
+  }
   public function setEmuleTopicByAid($uid=0,$data,$isadmin=false){
      //过滤字段
      $header = array();

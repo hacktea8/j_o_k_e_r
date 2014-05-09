@@ -6,7 +6,7 @@
 <div class="mob_leftd">
 <div class="mob_left l_left"> 
 <div class="mob_left_b2 b2">
-<h1><a href="/" title="返回首页" class="user_14">首页</a> -> <a  href="" title="查看此类型的所有笑话" class="user_14">夫妻</a> -> 霸气的老婆,不服不行啊</h1>
+<h1><a href="/" title="返回首页" class="user_14">首页</a> -> <a  href="<?php echo $channel[$info['cid']]['url'];?>" title="查看此类型的所有笑话" class="user_14"><?php echo $channel[$info['cid']]['title'];?></a> -> <?php echo $info['title'];?></h1>
 <span class="data l_right">浏览量: 次</span>
 </div>
 <div class="clear"></div>
@@ -25,12 +25,11 @@
 <!--336-280-->
 </div>
 <span><b>阅读技巧</b>：键盘 ←左 右→ 翻页，Ctrl+D 收藏本篇笑话</span><br />
-<span id="text110"><P>1、老婆：“老公，我意外怀孕了！”<BR>老公：“怎么可能！我都有做安全措施的！”<BR>老婆：“废话！孩子如果是你的，还算意外吗？”</P>
-<P>2、老婆怀孕了，整天作威作福，指手画脚，心生抱怨的我嘟囔了一句：“拿根鸡毛当令箭！”<BR>老婆默默无语，低头对着肚子说：“儿啊，你爹说你是鸡毛啊。”</P>
-<P>3、刚才跟老婆在路上走着，突然老婆的挎包不小心掉到了地上，她直接朝我肩膀打了一巴掌：“手机在包里放着呢，摔坏了怎么办？”<BR>我一脸惊恐的看着她：“你自己掉的，干嘛打我？”<BR>她幽幽的来了句：“习惯了。”</P>
-<P>4、晚饭过后，老公在削苹果给刚怀孕的老婆吃，结果不小心把手割伤了，对老婆说：老婆，我手受伤了，今晚你洗碗吧。<BR>老婆：药箱里还有创口贴，快贴上。<BR>老公很感动的看着老婆，老婆说：贴完就去洗碗吧。</P></span><br />
+<span id="text110">
+<?php echo $info['intro'];?>
+</span><br />
 
-<font color="#009900">看笑话就上：笑话集 www.jokeji.cn</font> 
+<font color="#009900">看笑话就上：<?php echo $web_title;?> <?php echo $domain;?></font> 
 <br />
 <br />
 <div class="clear"></div>
@@ -42,7 +41,7 @@
 <div class="ad468_date">
 <b>
  <!-- GG-2 --></b>
-<i>发布时间：2014-5-7 12:02:55</i>
+<i>发布时间：<?php echo $info['ptime'];?></i>
 </div>
 
 </div>
@@ -53,14 +52,14 @@
 <div class="page">
 <table width="100%" border="0" cellpadding="4" cellspacing="0">
 <tr align="center" >
-<td width="50%" align="left" class="user_14"><b>上一篇</b>：<a href="../../JokeHtml/bxnn/2014050712031399.htm" class="user_14">逗B青年谈恋爱</a></td>
-<td width="50%" align="right" class="user_14"><b>下一篇</b>：<a href="../../JokeHtml/jy/2014050712014453.htm" class="user_14">搞笑面试、白痴同事和雷人老板娘</a></td>
+<td width="50%" align="left" class="user_14"><b>上一篇</b>：<a href="<?php echo $info['preurl'];?>" class="user_14"><?php echo $info['pretitle'];?></a></td>
+<td width="50%" align="right" class="user_14"><b>下一篇</b>：<a href="<?php echo $info['nexturl'];?>" class="user_14"><?php echo $info['nextitle'];?></a></td>
 </tr>
 </table>
 <script language=javascript><!--
 document.onkeydown=nextpage;
-var prevpage="../../JokeHtml/bxnn/2014050712031399.htm";
-var nextpage="../../JokeHtml/jy/2014050712014453.htm";
+var prevpage="<?php echo $info['preurl'];?>";
+var nextpage="<?php echo $info['nexturl'];?>";
 function nextpage(event)
 { 
 event = event ? event : (window.event ? window.event : null); 
@@ -87,11 +86,13 @@ location=prevpage;
 <div class="jokeji_xg">
  <div class="joke_xg_title b4">相关笑话</div>
  <div class="joke_xg_txt b3"><table height='23' cellspacing='0' cellpadding='0' width='95%' border='0'>
+<?php foreach($info['relatdata'] as &$v){?>
 <tr height="30">
 <td width='2%' align='left'><span><img src='<?php echo $cdn_url;?>/public/images/d02.gif?v=<?php echo $version;?>' width='9' height='9' /></span></td>
 <td width="31%">
-<a href="/jokehtml/fq/20130701000355.htm" class="main_14" >夫妻大战,笑煞旁人</a>
+<a href="<?php echo $v['url'];?>" class="main_14" ><?php echo $v['title'];?></a>
 </td>
+<?php }?>
 <td width='2%' align='left'><span><img src='/images/d02.gif' width='9' height='9' /></span></td>
 <td width="31%">
 <a href="/jokehtml/fq/20120411001514.htm" class="main_14" >这些当老婆的女人幽默的无敌了</a>

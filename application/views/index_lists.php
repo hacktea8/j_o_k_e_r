@@ -10,159 +10,17 @@
       </tr>
     </table>
       <table width="100%" border="0" cellpadding="4" cellspacing="0" class="left_4bh" align="center" id="classlist" style="display:block">
+<?php $k=0 foreach($channel as &$v){ ?>
+<?php if($k%7==0){?>
         <tr valign="top" bgcolor="#F9F9F9">
-<td width="119">&nbsp;&nbsp;<a href="/list29_1.htm" target="_self" class="user_14">
-爆笑男女(1151)</a>
+<?php }?>
+<td width="119">&nbsp;&nbsp;<a href="<?php echo $v['url'];?>" target="_self" class="user_14">
+<?php echo $v['title'];?>(<?php echo $v['atotal'];?>)</a>
 </td>
-<td width="119">&nbsp;&nbsp;<a href="/list13_1.htm" target="_self" class="user_14">
-社会(795)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list43_1.htm" target="_self" class="user_14">
-冷笑话(772)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list5_1.htm" target="_self" class="user_14">
-校园(629)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list7_1.htm" target="_self" class="user_14">
-儿童(460)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list1_1.htm" target="_self" class="user_14">
-夫妻(456)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list27_1.htm" target="_self" class="user_14">
-综合(449)</a>
-</td>
+<?php if($k%6==0 || $k==count($channel)){?>
 </tr>
-<tr valign="top" bgcolor="#FFFFFF">
-<td width="119">&nbsp;&nbsp;<a href="/list40_1.htm" target="_self" class="user_14">
-爆笑签名(358)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list4_1.htm" target="_self" class="user_14">
-家庭(318)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list12_1.htm" target="_self" class="user_14">
-动物(306)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list16_1.htm" target="_self" class="user_14">
-职场(285)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list36_1.htm" target="_self" class="user_14">
-短信笑话(253)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list39_1.htm" target="_self" class="user_14">
-幽默网文(216)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list18_1.htm" target="_self" class="user_14">
-幽默笑话(156)</a>
-</td>
-</tr>
-<tr valign="top" bgcolor="#F9F9F9">
-<td width="119">&nbsp;&nbsp;<a href="/list31_1.htm" target="_self" class="user_14">
-影视台词(132)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list2_1.htm" target="_self" class="user_14">
-爱情(121)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list8_1.htm" target="_self" class="user_14">
-医疗(110)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list22_1.htm" target="_self" class="user_14">
-文艺(107)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list6_1.htm" target="_self" class="user_14">
-名著暴笑(106)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list34_1.htm" target="_self" class="user_14">
-哲理(105)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list9_1.htm" target="_self" class="user_14">
-愚人(99)</a>
-</td>
-</tr>
-<tr valign="top" bgcolor="#FFFFFF">
-<td width="119">&nbsp;&nbsp;<a href="/list30_1.htm" target="_self" class="user_14">
-节日笑话(94)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list15_1.htm" target="_self" class="user_14">
-民间(92)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list11_1.htm" target="_self" class="user_14">
-交通(89)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list17_1.htm" target="_self" class="user_14">
-名人(88)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list38_1.htm" target="_self" class="user_14">
-国际(71)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list20_1.htm" target="_self" class="user_14">
-体育(60)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list24_1.htm" target="_self" class="user_14">
-恋爱必读(51)</a>
-</td>
-</tr>
-<tr valign="top" bgcolor="#F9F9F9">
-<td width="119">&nbsp;&nbsp;<a href="/list42_1.htm" target="_self" class="user_14">
-网络(50)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list23_1.htm" target="_self" class="user_14">
-电脑(47)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list21_1.htm" target="_self" class="user_14">
-宗教(47)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list10_1.htm" target="_self" class="user_14">
-司法(44)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list3_1.htm" target="_self" class="user_14">
-恐怖(42)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list41_1.htm" target="_self" class="user_14">
-搞笑测试(38)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list35_1.htm" target="_self" class="user_14">
-感情(36)</a>
-</td>
-</tr>
-<tr valign="top" bgcolor="#FFFFFF">
-<td width="119">&nbsp;&nbsp;<a href="/list44_1.htm" target="_self" class="user_14">
-军事(34)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list19_1.htm" target="_self" class="user_14">
-搞笑歌词(29)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list14_1.htm" target="_self" class="user_14">
-顺口溜(28)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list33_1.htm" target="_self" class="user_14">
-女人(27)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list37_1.htm" target="_self" class="user_14">
-股市证券(21)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list32_1.htm" target="_self" class="user_14">
-传说(13)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list45_1.htm" target="_self" class="user_14">
-小笑话(9)</a>
-</td>
-</tr>
-<tr valign="top" bgcolor="#F9F9F9">
-<td width="119">&nbsp;&nbsp;<a href="/list46_1.htm" target="_self" class="user_14">
-爆笑笑话(7)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list28_1.htm" target="_self" class="user_14">
-求爱秘籍(6)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list25_1.htm" target="_self" class="user_14">
-英语(5)</a>
-</td>
-<td width="119">&nbsp;&nbsp;<a href="/list26_1.htm" target="_self" class="user_14">
-原创(4)</a>
-</td>
-</tr>
-
+<?php }?>
+<?php $k++}?>
       </table>
       <table width="50" height="6" border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -215,14 +73,16 @@
 	
 						
     <table width="640" height="30" border="0" cellpadding="0" cellspacing="0" background="<?php echo $cdn_url;?>/public/images/d01.gif?v=<?php echo $version;?>">
+<?php foreach($infolist as &$v){?>
       <tr>
         <td width="15" align="left"><img src="<?php echo $cdn_url;?>/public/images/d02.gif?v=<?php echo $version;?>" width="8" height="10" /></td>
-        <td width="307" align="left"><a href="/jokehtml/jy/2014050800042993.htm" class="main_14" target="_blank" >爆笑同事,逗人笑急笑频笑不尽</a></td>
+        <td width="307" align="left"><a href="<?php echo $v['url'];?>" class="main_14" target="_blank" ><?php echo $v['title'];?></a></td>
         <td width="105" align="left">评论:0</td>
-        <td width="141" align="left">浏览: 9143 次</td>
+        <td width="141" align="left">浏览: <?php echo $v['hits'];?> 次</td>
         <td width="72" align="left"><span class="date">
-          2014-5-8</span></td>
+          <?php echo $v['ptime'];?></span></td>
       </tr>
+<?php }?>
     </table>	  
 	  </td>
 
