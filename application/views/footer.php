@@ -7,8 +7,19 @@
 </script>
 </div>
 </div>
-
+<div style="display:none;">
+<script type="text/javascript">
+function _loadIndex(){$.get("/maindex/index");
+$.get("/maindex/crontab");
+}
+$(document).ready(function(){
+<?php if('index' == $_a){ ?>
+window.setTimeout("_loadIndex()",5000);
+<?php } ?>
+});
+</script>
 <!-- Baidu Button BEGIN -->
 <!-- Baidu Button END -->
+</div>
 </body>
 </html>

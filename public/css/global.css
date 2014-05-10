@@ -115,7 +115,7 @@ a:hover{ text-decoration:underline; color:#FF3300;font-size:14px;}
 
 
 
-.top_adreg{margin-top:4px; height:90px; width:960px; margin:0 auto;}
+.top_adreg{margin-top:4px; /*height:90px;*/ width:960px; margin:0 auto;}
 
 .top_ad2{width:728px;height:90px;}
 .top_reg img{ vertical-align:bottom;}

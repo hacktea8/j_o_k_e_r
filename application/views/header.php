@@ -8,6 +8,7 @@
 <meta name="description" content="<?php echo $seo_title,'-',$web_title,$seo_description;?>" />
 <link href="<?php echo $cdn_url;?>/public/css/global.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo $cdn_url,'/public/css/',$_c,'_',$_a;?>.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 </head>
 <body>
 <script language="javascript" src="<?php echo $cdn_url;?>/public/js/global.js?v=<?php echo $version;?>"></script>
@@ -18,6 +19,12 @@
         <div class="top_ad l_left">
 <!-- 468-60 --></div>
         <div class="top_login l_right" id="userstat">
+<span>
+<?php if(0){?>
+<a href="/yuanchuangxiaohua/details.asp" target="_blank">发表笑话,赚取奖金</a> |  
+<?php }?>
+</span><br>
+ <a href="/User/JokeAdd" target="_blank"><img src="<?php echo $cdn_url;?>/public/images/fbjoke.gif?v=<?php echo $version;?>" alt="发表笑话" border="0"></a>
 </div>
         <div class="clear"></div>
         <div class="top_menu">
@@ -41,7 +48,7 @@
                 <li style="color:#4EAA00">搜索：</li>
                 <li><span id="cidselect">
                  </span></li>
-                <li><input name="keyword" id="keyword" type="text" size="26" maxlength="18" class="input" />
+                <li><input name="q" id="keyword" type="text" size="26" maxlength="18" class="input" />
               </li>
                 <li><input type="image" src="<?php echo $cdn_url;?>/public/images/search.gif?v=<?php echo $version;?>" border="0" alt="点击搜索笑话"/></li>
 	</ul>

@@ -80,4 +80,5 @@ a.black12:hover {	font-size:12px;	color:#ff0000;text-decoration: underline;}
 /*页码定义*/
 
 .ad360_280{float:right; OVERFLOW-X: auto; margin-top:7px; margin-left:8px;height:312px;}
-
+.main_title a{margin-left:5px;}
+.main_title span{margin-left:5px;}

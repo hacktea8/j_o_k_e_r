@@ -2,12 +2,16 @@
 require_once 'basemodel.php';
 class emuleModel extends baseModel{
   protected $_dataStruct = 'a.`id`, a.`cid`, a.`uid`, a.`name`, a.`collectcount`, a.`ptime`, a.`utime`, a.`hits`';
-  protected $_datatopicStruct = 'a.`id`,a.`ourl`, a.`cid`, a.`uid`, a.`name`, a.`collectcount`, ac.`keyword`, a.`ptime`, a.`utime`, ac.`intro`, a.`hits`';
+  protected $_datatopicStruct = 'a.`id`,a.`ourl`, a.`cid`, a.`uid`, a.`name`, a.`collectcount`, ac.`keyword`, a.`ptime`, a.`utime`, ac.`intro`,a.`pre_aid`,a.`next_aid`, a.`hits`';
+  public $site_url = '';
 
   public function __construct(){
     parent::__construct();
   }
   public function autoSetVideoOnline($limit = 5){
+    if(!$limit){
+      return false;
+    }
     $cate = $this->getCateByCid(0);
     foreach($cate as $v){
       $k = $v['id'];
@@ -25,42 +29,55 @@ class emuleModel extends baseModel{
     }
     return 1;
   }
-  public function get_link($mod,$site_url='',$p1='',$p2=0,$p3=1,$p4=''){
+  public function get_link($mod,$p1='',$p2=0,$p3=1,$p4=''){
     $url = '';
     if('cate' == $mod){
-      $url = sprintf('%s/maindex/lists/%d/%d/%d.shtml',$site_url,$p1,$p2,$p3);
+      $url = sprintf('%s/maindex/lists/%d/%d/%d.shtml',$this->site_url,$p1,$p2,$p3);
     }elseif('topic' == $mod){
-      $url = sprintf('%s/maindex/topic/%d.shtml',$site_url,$p1);
+      $url = sprintf('%s/maindex/topic/%d.shtml',$this->site_url,$p1);
+    }elseif('dateup' == $mod){
+      $url = sprintf('%s/maindex/update_by_date/%d/%d/%d.shtml',$this->site_url,$p1,$p2,$p3);
     }
     return $url;
+  }
+  public function getMonthUpdateList($limit = 6){
+    $return = array();
+    for($i=0;$i<6;$i++){
+      $start = date('Ym',strtotime('-'.$i.' month')).'01';
+      $end = date('Ym',strtotime('-'.($i-1).' month')).'01';
+      $sql = sprintf("SELECT COUNT(*) as total FROM %s WHERE `flag`=1 AND `onlinedate`>=%d AND `onlinedate`<%d",$this->db->dbprefix('emule_article'),$start,$end);
+      $v = $this->db->query($sql)->row_array();
+      $v['title'] = date('Y年m月',strtotime($start));
+      $date = date('Ym',strtotime($start));
+      $v['url'] = $this->get_link('dateup',$date);
+      $return[] = $v;
+    }
+    return $return;
+  }
+  public function getArticleListByDate($date,$order,$page,$limit){
+    $datetime = strtotime($date);
+    $start = date('Ym',$datetime).'01';
+    $end = date('Ym',strtotime('+1 month',$datetime)).'01';
+    $sql = sprintf("SELECT * as total FROM %s WHERE `flag`=1 AND `onlinedate`>=%d AND `onlinedate`<%d",$this->db->dbprefix('emule_article'),$start,$end);
+    $list = $this->db->query($sql)->result_array();
+    foreach($list as &$v){
+      $v['url'] = $this->get_link('topic',$v['id']);
+    }
+    return $list;
   }
   public function getEmuleIndexData(){
     $emuleIndex = $tmp = array();
     $limit = 15;
-    $tmp = $this->getArticleListByCid(0,$order=0,$page=1,$limit);
-    $emuleIndex['new'] = $tmp['emulelist'];
-    $tmp = $this->getArticleListByCid(0,$order=1,$page=1,$limit);
-    $emuleIndex['rand'] = $tmp['emulelist'];
-    $tmp = $this->getArticleListByCid(0,$order=2,$page=1,$limit);
-    $emuleIndex['hot'] = $tmp['emulelist'];
-    $cate = $this->getCateByCid(0);
-    foreach($cate as $v){
-      $k = $v['id'];
-      $tmp = $this->getArticleListByCid($k,$order=2,$page=1,$limit);
-      $emuleIndex['catehot'][] = array('list'=>$tmp['emulelist'],'name'=>$v['name'],'url'=>$this->get_link('cate','',$k));
+    $emuleIndex['monthupdate'] = $this->getMonthUpdateList(6);
+    $emuleIndex['new'] = $this->getArticleListByCid($cid=0,$order=0,$page=1,$limit=20);
+    $cate = array(11,17);
+    foreach($cate as $cid){
+      $emuleIndex['cate_index'][$cid] = $this->getArticleListByCid($cid,$order=2,$page=1,$limit=20);
     }
-    $limits = 25;
-    foreach($cate as $v){
-      $k = $v['id'];
-      $list = array();
-      $subcate = array(array('name'=>'最新','url'=>$this->get_link('cate','',$k,0)),array('name'=>'随机','url'=>$this->get_link('cate','',$k,1)));
-      $tmp = $this->getArticleListByCid($k,$order=0,$page=1,$limits);
-      $list[0] = $tmp['emulelist'];
-      $tmp = $this->getArticleListByCid($k,$order=1,$page=1,$limits);
-      $list[1] = $tmp['emulelist'];
-      $tmp = $this->getArticleListByCid($k,$order=1,$page=2,$limits+10);
-      $rand = $tmp['emulelist'];
-      $emuleIndex['topiclist'][] = array('rand'=>$rand,'subcate'=>array('cate'=>$subcate,'list'=>$list));
+    $emuleIndex['hot'] = $this->getArticleListByCid($cid=0,$order=2,$page=1,$limit=20);
+    $cate = array(8,1,7,12,4,28);
+    foreach($cate as $cid){
+      $emuleIndex['cateindex'][$cid] = $this->getArticleListByCid($cid,$order=1,$page=1,$limit=20);
     }
     return $emuleIndex;
   }
@@ -80,7 +97,7 @@ class emuleModel extends baseModel{
     foreach($list as &$v){
       $v['utime'] = date('Y-m-d H:i:s', $v['utime']);
       $v['atime'] = date('Y-m-d H:i:s', $v['atime']);
-      $v['url'] = $this->get_link('topic','',$v['id']);
+      $v['url'] = $this->get_link('topic',$v['id']);
     }
     return $list;
   }
@@ -144,22 +161,17 @@ class emuleModel extends baseModel{
      $page = $page ? $page : 0;
      $page *= $limit;
      if($cid){
-       $cids = $this->getAllCateidsByCid($cid);
-       $cids = implode(',',$cids);
-       $where = ' a.`cid` in ('.$cids.') AND ';
+       $where = sprintf(' a.`cid`=%d AND ',$cid);
      }
-     $sql = sprintf('SELECT %s,c.`name` as cname FROM %s as a LEFT JOIN %s as c ON (a.cid=c.id) WHERE %s a.`flag`=1 AND c.flag=1 %s LIMIT %d,%d',$this->_dataStruct,$this->db->dbprefix('emule_article'),$this->db->dbprefix('emule_cate'),$where,$order,$page,$limit);
+     $sql = sprintf('SELECT %s FROM %s as a WHERE %s a.`flag`=1 %s LIMIT %d,%d',$this->_dataStruct,$this->db->dbprefix('emule_article'),$where,$order,$page,$limit);
 //echo $sql;exit;
      $data = array();
-     $data['emulelist'] = $this->db->query($sql)->result_array();
-     foreach($data['emulelist'] as &$val){
+     $data = $this->db->query($sql)->result_array();
+     foreach($data as &$val){
        $val['ptime'] = date('Y-m-d', $val['ptime']);
        $val['utime'] = date('Y/m/d', $val['utime']);
-       $val['url'] = $this->get_link('topic','',$val['id']);
+       $val['url'] = $this->get_link('topic',$val['id']);
      }
-     $data['postion'] = $this->getsubparentCate($cid);
-     $data['subcatelist'] = $this->getAllSubcateByCid($cid);
-     //$data['atotal']   = $this->getCateAtotal($cid);
      return $data;
   }
 
@@ -214,13 +226,13 @@ class emuleModel extends baseModel{
      if(empty($data['info'])){
        return array();
      }
-     $data['info']['url'] = $this->get_link('topic','',$data['info']['id']);
-     $data['info']['preurl'] = $this->get_link('topic','',$data['info']['pre_aid']);
-     $data['info']['nexturl'] = $this->get_link('topic','',$data['info']['next_aid']);
+     $data['info']['url'] = $this->get_link('topic',$data['info']['id']);
+     $data['info']['preurl'] = $this->get_link('topic',$data['info']['pre_aid']);
+     $data['info']['nexturl'] = $this->get_link('topic',$data['info']['next_aid']);
      $tmp = $this->getTopicBaseInfo($data['info']['pre_aid']);;
-     $data['info']['pretitle'] = $tmp['title'];
+     $data['info']['pretitle'] = $tmp['name'];
      $tmp = $this->getTopicBaseInfo($data['info']['next_aid']);;
-     $data['info']['nextitle'] = $tmp['title'];
+     $data['info']['nextitle'] = $tmp['name'];
      return $data;
   }
   public function getTopicBaseInfo($aid){
@@ -228,7 +240,7 @@ class emuleModel extends baseModel{
         return false;
      }
      $where = '';
-     $sql = sprintf('SELECT `title` FROM %s WHERE id =%d  %s',$this->db->dbprefix('emule_article'),$aid,$where);
+     $sql = sprintf('SELECT `name` FROM %s WHERE id =%d  %s',$this->db->dbprefix('emule_article'),$aid,$where);
      $data = $this->db->query($sql)->row_array();
      return $data;
   }

@@ -1,277 +1,152 @@
-<!-- head -->
-<div class="mainDiv">
+<div class="mybody">
+	<div class="leftbody l_left">
+   	  <h2><a href="dateupdate.asp">网站更新记录</a></h2>
+      <ul>
+<?php foreach($emuleIndex['monthupdate'] as &$v){?>
+<li><img src="<?php echo $cdn_url;?>/public/images/date.gif?v=<?php echo $version;?>" border=0 style='height:20'><a  href="<?php echo $v['url'];?>" title="查看当前日期的笑话"  target="_blank"><?php echo $v['title'];?></a><span>(更新：<?php echo $v['total'];?>篇)</span></li>
+<?php }?>
+</ul>
+<div class="left_ad">
+<?php if(0){?>
+       <h2>网站活动专题</h2>
+        <ul>
+       <li><a href="joke_elite.htm" target="_blank"><font color="#365eb0">1.笑话大全 爆笑笑话1600则</font></a></li>
+       </ul>
+<?php }?>
+	  </div>
+	</div>
+    <div class="rightbody l_right">
+      <div class="title l_left b4">
+        <h3 class="l_left"><a href="list.htm">最新笑话</a></h3>
+        <b>+ <a href="/list18_1.htm" target="_blank">经典笑话</a> + <a href="/list43_1.htm" target="_blank">冷笑话</a></b> </div>
+      <div class="clear"></div>
+      <div class="newcontent l_left">
+        <ul>
+<?php foreach($emuleIndex['new'] as $k => &$v){
+if($k>9){
+break;
+}
+?>
+          <li><img src="<?php echo $cdn_url;?>/public/images/d02.gif?v=<?php echo $version;?>" width="8" height="10" border="0" /> 
+<a href="<?php echo $v['url'];?>" target="_blank" title="<?php echo $v['name'];?>"><?php echo $v['name'];?></a>(<?php echo $v['hits'];?>)<span><?php echo $v['onlinedate'];?></span><span><img src="<?php echo $cdn_url;?>/public/images/new.gif?v=<?php echo $version;?>" width="28" height="11" border="0" /></span></li>
+<?php }?>
+        </ul>
+      </div>
+      <div class="bodyad l_right" style="width:336px; padding-top:6px;">
+<!--首页  336*280 -->
+<ul>
+<?php foreach($emuleIndex['new'] as $k => &$v){
+if($k<10){
+continue;
+}
+?>
+          <li><img src="<?php echo $cdn_url;?>/public/images/d02.gif?v=<?php echo $version;?>" width="8" height="10" border="0" /> 
+<a href="<?php echo $v['url'];?>" target="_blank" title="<?php echo $v['name'];?>"><?php echo $v['name'];?></a>(<?php echo $v['hits'];?>)<span><?php echo $v['onlinedate'];?></span><span><img src="<?php echo $cdn_url;?>/public/images/new.gif?v=<?php echo $version;?>" width="28" height="11" border="0" /></span></li>
+<?php }?>
+        </ul>
+      </div>
+    </div>
+  <div class="clear"></div>
 
-<div class="line_space"></div>
-<div class="folder_div box_7">
-<div style="margin: 4px 0 0;" id="folderlist">
-<div class="tab-nav-1 tab-nav-1_index block">
-<ul style="float: left;" id="hotnavs" class="ul block">
-	<li class="on"
-		onmouseover=""
-		onmouseout=""
-		id="foldertagg_0"><a href="javascript:void(0);"
-		target="_blank">最新</a></li>
-	<li
-		onmouseover=""
-		onmouseout=""
-		id="foldertagg_1" class=""><a
-		href="" target="_blank">随机</a></li>
-	<li
-		onmouseover=""
-		onmouseout=""
-		id="foldertagg_2" class=""><a
-		href="javascript:void(0);" target="_blank">最热</a></li>
+<div class="leftbody l_left">
+        <h2><a href="list.htm">笑话大全</a></h2>
+  <div class="joketype l_left">
+        <ul>
+<?php foreach($rootCate as &$v){?>
+  <li> <a href="<?php echo $v['url'];?>"><?php echo $v['name'];?>(<?php echo $v['atotal'];?>)</a></li>
+<?php }?>
 </ul>
-</div>
-<div id="index" class="clearfix">
-<div class="id_left">
-<div class="vc_old main vc_old_index" id="folderdiv_index_0" style="">
-<ul  class="clearfix ul">
-<?php
-foreach($emuleIndex['new'] as $row){
-?>
-	<li class="list">
-	<div class="cover_3"><a href="<?php echo $row['url'];?>" target="_blank" onclick=""><img class="lazy"  data-original="<?php echo $showimgapi,$row['cover'];?>&w=100" style="width: 100px; height: 100px" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /><noscript><img src="<?php echo $showimgapi,$row['cover'];?>&w=100" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /></noscript></a></div>
-	<div class="cv_title">
-	<ul>
-	<li class="strong"><a href="<?php echo $row['url'];?>" onclick="" target="_blank"><?php echo $row['name'];?></a></li>
-		<li></li>
-	</ul>
-	</div>
-	</li>
-<?php
-}
-?>
-</ul>
-</div>
-<div class="vc_old main vc_old_index" id="folderdiv_index_1" style="display: none">
-<ul class="clearfix ul">
-<?php
-foreach($emuleIndex['rand'] as $row){
-?>
-	<li class="list">
-	<div class="cover_3"><a href="<?php echo $row['url'];?>" target="_blank" onclick=""><img class="lazy"  data-original="<?php echo $showimgapi,$row['cover'];?>&w=100" style="width: 100px; height: 100px" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /><noscript><img src="<?php echo $showimgapi,$row['cover'];?>&w=100" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /></noscript></a></div>
-	<div class="cv_title">
-	<ul>
-		<li class="strong"><a href="<?php echo $row['url'];?>" onclick="" target="_blank"><?php echo $row['name'];?></a></li>
-	</ul>
-	</div>
-	</li>
-<?php
-}
-?>
-</ul>
-</div>
-<div class="vc_old main vc_old_index" id="folderdiv_index_2" style="display: none">
-<ul class="clearfix ul">
-<?php
-foreach($emuleIndex['hot'] as $row){
-?>
-	<li class="list">
-	<div class="cover_3"><a href="<?php echo $row['url'];?>" target="_blank" onclick=""><img class="lazy"  data-original="<?php echo $showimgapi,$row['cover'];?>&w=100" style="width: 100px; height: 100px" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /><noscript><img src="<?php echo $showimgapi,$row['cover'];?>&w=100" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /></noscript></a></div>
-	<div class="cv_title">
-	<ul>
-		<li class="strong"><a href="<?php echo $row['url'];?>" onclick="" target="_blank"><?php echo $row['name'];?></a></li>
-	</ul>
-	</div>
-	</li>
-<?php
-}
-?>
-</ul>
-</div>
-</div>
-<div class="id_right">
-<div class="box_7">
-<div class="sidebar_hot main clearfix">
-<div class="side_hot_nav side_hot_nav_index clearfix">
-<ul id="hotnavs" class="ul clearfix">
-<?php
-foreach($emuleIndex['catehot'] as $key=>$row){
-?>
-	<li
-		onmouseout=""
-		onmouseover=""
-		id="hotnav_<?php echo $key;?>" class="<?php echo $key?'':'on';?>"><a onclick="void(0);return false;"
-		target="_blank" name="for_pad" href="<?php echo $row['url'];?>"><?php echo $row['name'];?></a></li>
-<?php
-}
-?>
-</ul>
-</div>
-<div class="side_hot_list side_hot_list_index">
-<?php
-foreach($emuleIndex['catehot'] as $key=>$list){
-?>
-<ul id="hottab_index_<?php echo $key;?>" class="clearfix" style="<?php  if($key){ ?>display:none <?php } ?>">
-<?php
-foreach($list['list'] as $k=>$row){
-?>
-	<li class="<?php if(!$k){ ?>on <?php } ?>" onmouseout=""
-		onmouseover=""
-		id="hot1tag_<?php echo $k;?>"><a title="<?php echo $row['name'];?>"
-		onclick=""
-		href="<?php echo $row['url'];?>" class="clearfix">
-	<div class="list_ins">
-	<div class="list_top clearfix">
-	<div class="li_view_num"><?php echo $row['hits']?></div>
-	<div class="li_title"><span class="compositor red_compositor"><?php echo $k+1;?></span><span>[<?php echo $row['cname'];?>]</span>&nbsp;<strong><?php echo $row['name'];?></strong></div>
-	</div>
-	<div class="list_main clearfix">
-	<div class="li_img">
-	<div class="entry_cover  show_play"><!--[if IE 6]><span class="spacer" style="width:54px;height:74px;"></span><![endif]--><img class="lazy cover_img"  data-original="<?php echo $showimgapi,$row['cover'];?>&w=100" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /><noscript><img src="<?php echo $showimgapi,$row['cover'];?>&w=100" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" class="cover_img" /></noscript>
-	<div class="play_ico_small"></div>
-	</div>
-	</div>
-	<div class="li_info"></div>
-	</div>
-	</div>
-	</a></li>
-<?php
-}
-?>
-</ul>
-<?php
-}
-?>
-</div>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 
+<div class="rightbody l_right">
+<?php foreach($emuleIndex['cate_index'] as $k => &$v){?>
+<div class="title8 l_left b4" style="margin-top:8px;">
+<h3><a href="hot.htm"><?php echo $rootCate[$k]['name'];?></a></h3>
+<span><a href="<?php echo $rootCate[$k]['url']?>" target="_blank">&gt;&gt; 点击查看</a> </span>
+</div>
+<div class="clear"></div>
+<div class="listjoke">    
+<ul>
+<div class="clear" style="height:7px;"></div>
+<?php foreach($v as &$vv){?>
+  <li><span><b> <a href="<?php echo $vv['url']?>" target="_blank" ><?php echo $vv['name']?></a></b><i>(<?php echo $vv['hits']?>)</i></span><?php echo $vv['onlinedate']?></li>
+<?php }?>
+	</ul>
+	</div>    
+<?php }?>
+<div class="title8 l_left b4" style="margin-top:8px;">
+<h3><a href="hot.htm">笑话排行榜</a></h3>
+<span><a href="<?php echo $rootCate[18]['url']?>" target="_blank">&gt;&gt; 点击查看</a> <a href="<?php echo $rootCate[18]['url']?>" target="_blank"><?php echo $rootCate[18]['name']?></a></span>
+</div>
+<div class="clear"></div>
+<div class="listjoke">
+<ul>
+<div class="clear" style="height:7px;"></div>
+<?php foreach($emuleIndex['hot'] as &$vv){?>
+  <li><span><b> <a href="<?php echo $vv['url']?>" target="_blank" ><?php echo $vv['name']?></a></b><i>(<?php echo $vv['hits']?>)</i></span><?php echo $vv['onlinedate']?></li>
+<?php }?>
+        </ul>
+        </div>
+</div>
+<div class="clear"></div>	
+
+<div class="ad960index">    
+<!-- 广告位：首页960-90通栏 -->
 </div>
 
-<div class="mainDiv" id="advertisement_bottom">
-<div class="line_space"></div>
-<div
-	style="width: 960px; height: 90px; border: 1px solid #ccc; padding: 10px 14px;">
-<!--960X90_AD--></div>
+<div class="clear"></div>
+<div class="jokeother">
+<?php $ks=1;foreach($emuleIndex['cateindex'] as $k => &$v){?>
+	<div class="joke0<?php echo $ks;?> l_left">
+	<div class="joke0<?php echo $ks;?>title l_left b4">
+	<h2><a href="<?php echo $rootCate[$k]['url'];?>"><?php echo $rootCate[$k]['name'];?></a></h2>
+	</div>
+    <div class="clear"></div>
+	<ul>    
+<?php foreach($v as &$vv){?>
+	<li><span><b> <a href="<?php echo $vv['url'];?>" target="_blank" ><?php echo $vv['name'];?></a></b><i>(<?php echo $vv['hits'];?>)</i></span><?php echo $vv['onlinedate'];?></li>
+<?php }?>
+	</ul>
+</div>
+<?php }?>
+
+<div class="clear"></div>
+<?php if(0){?>
+<div class="title1 l_left b4"><h3><a href="http://photo.jokeji.cn/offer.asp" target="_blank">浪漫爱情故事</a></h3>
+   	  <b></b>
+<span style="width:680px; cursor:hand" ><a href="http://photo.jokeji.cn/offer.asp" target="_blank">更多爱情故事 >></a></span></div>
+    <div class="clear"></div>
+    <div class="photoother">
+      <ul>
+        <li><a href="http://photo.jokeji.cn/ad/214/" target="_blank"><img src="http://www.jokeji.cn/ad/a-01.jpg" alt="情人节专题" width="160" height="116" border="0" /></a><span><a href="http://photo.jokeji.cn/ad/214/" target="_blank" class="top_txt">情人节-沧海桑田见证我的爱</a></span></li>
+       
+      </ul>
+  </div>
+<?php }?>
 <div class="clear"></div>
 
-<div class="mainDiv">
-
-<div class="line_space"></div>
-
-<?php
-foreach($emuleIndex['topiclist'] as $key=>$value){
-?>
-<div class="folder_div folder_div_<?php echo $key;?> box_7">
-<div style="margin: 4px 0 0;" id="folderlist<?php echo $key;?>">
-<div class="tab-nav-1 tab_nav_<?php echo $key;?> block">
-<ul style="float: left;" id="hotnavs" class="ul block cate_list">
-<?php
-foreach($value['subcate']['cate'] as $kk=>$val){
-?>
-	<li relcla="cate_class_<?php echo $key;?>" relid="cate_<?php echo $key;?>" class="<?php if(!$kk){ ?>on<?php } ?>"
-		onmouseover=""
-		onmouseout=""
-		id="foldertagg_<?php echo $kk;?>"><a href="<?php echo $val['url'];?>"
-		target="_blank"><?php echo $val['name'];?></a></li>
-<?php } ?>
-</ul>
-</div>
-<div class="clearfix">
-<div class="id_left id_moreleft">
-<?php
-foreach($value['subcate']['list'] as $ky=>$v){
-?>
-<div class="vc_old main moremain cate_class_<?php echo $key;?>" id="cate_<?php echo $key,'_',$ky;?>" style="<?php if($ky){ ?>display:none;<?php } ?>">
-<ul class="clearfix ul">
-<?php
-foreach($v as $k=>$row){
-?>
-	<li class="list">
-	<div class="cover_3"><a
-		href="<?php echo $row['url'];?>" target="_blank"
-		onclick=""><img class="lazy"  data-original="<?php echo $showimgapi,$row['cover'];?>&w=100" style="width: 100px; height: 100px" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /><noscript><img src="<?php echo $showimgapi,$row['cover'];?>&w=100" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /></noscript></a></div>
-	<div class="cv_title">
-	<ul>
-		<li class="strong"><a
-			href="<?php echo $row['url'];?>"
-			onclick=""
-			target="_blank"><?php echo $row['name'];?></a></li>
-		<li></li>
-	</ul>
-	</div>
-	</li>
-<?php } ?>
-</ul>
-<div style="" class="more_t"><a
-	onclick="" target="_blank"
-	href="<?php echo $val['url'];?>">更多<?php echo $row['cname'];?>&gt;&gt;</a></div>
-</div>
-<?php } ?>
-</div>
-<div class="id_right">
-<div class="idr_out">
-<div class="idr_in">
-<div class="red_title">
-<h3><span>随机精选</span></h3>
-</div>
-<div class="side_list_2">                
-   <ul class="ul">                                   
-<?php
-foreach($value['rand'] as $key=>$row){
-?>
- <li>                        
-  <span class="left">                            
-<span class="compositor red_compositor"><?php echo $key+1;?></span>                            
-<a href="<?php echo $row['url'];?>" title="<?php echo $row['name'];?>" onclick=""><?php echo $row['name'];?></a>
-</span>
-<span class="right"></span>
-</li>
-<?php } ?>
-   </ul>        
-   </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<?php
-} ?>
 </div>
 
-<div class="mainDiv" id="advertisement_bottom">
-<div class="line_space"></div>
-<div
-	style="width: 960px; height: 90px; border: 1px solid #ccc; padding: 10px 14px;">
-<!--960X90_AD--></div>
-<div class="clear"></div>
+<div class="foot">
+    
+<div class="friends">
+<div class="baidu">
 </div>
-<script type="text/javascript">
-$(document).ready(function(){
-var index=0;
-  $('.side_hot_nav_index #hotnavs li').mouseover(function(){
-     index=$(this).index();
-     $('.side_hot_nav_index #hotnavs li').removeClass('on');
-     $(this).addClass('on');
-     $('.side_hot_list_index ul').hide();
-     $('#hottab_index_'+index).show();
-  });
-  $('.side_hot_list_index ul li').mouseover(function(){
-     $('.side_hot_list_index ul li').removeClass('on');
-     $(this).addClass('on');
-  });
-  $('.tab-nav-1_index #hotnavs li').mouseover(function(){
-     index=$(this).index();
-     $('.tab-nav-1_index #hotnavs li').removeClass('on');
-     $(this).addClass('on');
-     $('#index .id_left div.vc_old_index').hide();
-     $('.id_left #folderdiv_index_'+index).show();
-  });
-  $('.cate_list li').mouseover(function(){
-     index=$(this).index();
-     $('.cate_list li').removeClass('on');
-     $(this).addClass('on');
-     var id=$(this).attr('relid');
-     var cla=$(this).attr('relcla');
-     $('.'+cla).hide();
-     $('#'+id+'_'+index).show();
-  });
-});
-</script>
+<?php if(0){?>
+<div class="links">
+<table width="950" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="214" valign="top" style="padding-top:4px; color:#333;">导航合作：
+    
+    <a href="http://www.hao123.com/gaoxiao/" target="_blank">hao123</a> | 
+    </tr>
+</table>
+
+
+<font color="#333">友情链接：</font>
+<a href="http://xiaohua.zol.com.cn" target="_blank">ZOL笑话</a> | 
+
+</div>
+<?php }?>
+</div>

@@ -2,9 +2,9 @@
 require_once 'webbase.php';
 class Usrbase extends Webbase {
    
-  public $seo_title = '首页'; 
-  public $seo_keywords = '种子,快播种子,BT种子,BT下载,最新电影,高清电影,快播资源,百度影音种子,百度影音资源,torrent,电影资源';
-  public $seo_description = '提供最新高清电影下载，拥有最全最高清的电影种子，快播(百度影音)种子资源你懂的，提供国内外最新BT种子下载服务，btv.hacktea8.com，专注于分享各类最新720(1080)P电影下载分享服务。';
+  public $seo_title = '首页_开心一刻';
+  public $seo_keywords = '笑话,爆笑笑话,幽默笑话,笑话大全,搞笑短信,xiaohua,冷笑话,经典笑话,冷笑话大全,笑话吧,搞笑笑话';
+  public $seo_description = '开心一刻 笑话巴士提供各种笑话，有经典笑话，幽默笑话，爆笑笑话，冷笑话，笑话大全，短信笑话，笑话故事，搞笑笑话，搞笑短信，笑话吧，笑话排行榜，陪伴大家开心快乐每一天!';
   public $imguploadapiurl = 'http://img.hacktea8.com/imgapi/upload/?seq=';
 
   public function __construct(){

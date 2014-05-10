@@ -26,11 +26,11 @@ em{color:red;}
     </div><!-- /.top-info -->
     <div class="header">
         <div class="row">
-            <div class="logo fl"><a href="/" title="<?php echo $web_title;?>_软件下载,绿色软件,手机软件下载尽在绿色<?php echo $web_title;?>">
+            <div class="logo fl"><a href="/" title="<?php echo $web_title;?>">
 <?php echo $web_title;?>
 </a></div>
             <div class="search-form">
-                <form action="/index/search/" method="get" >
+                <form action="/maindex/search/" method="get" >
                     <input type="text" id="keyword" autocomplete="off" class="search-wrod" name="q" placeholder="请输入需要搜索的关键词" x-webkit-speech="" speech="" value="<?php echo $q;?>"/>
                     <button type="submit" id="search_submit" class="search-btn">立即搜索</button>
                 </form>
@@ -106,15 +106,7 @@ $row['update_timestamp']=date('Y-m-d',$row['update_timestamp']);
                       </p>
                   </div>
                   <div class="li-contnet">
-                      <a href="<?php echo $row['url'];?>" class="pic"><img onerror="javascript:this.src='<?php echo $img_url;?>show404.jpg';" src="<?php echo $showimgapi,$row['thumbnail'];?>&w=100" title="<?php echo strip_tags($row['title']); ?>" alt="<?php echo strip_tags($row['title']);?>" /></a>
-<!--
-                      <p class="soft-info ext">
-                          <span class="item"><span class="til">语言：</span>简体中文</span>
-                          <span class="item"><span class="til">类型：</span>国产软件</span>
-                          <span class="item"><span class="til">插件情况：</span>无插件</span>
-                          <span class="item star-bar"><span class="til">软件评分：</span><span class="star"><i style="width:80%;"></i></span></span>
-                      </p>
--->
+                      <a href="<?php echo $row['url'];?>" title="<?php echo strip_tags($row['title']); ?>" alt="<?php echo strip_tags($row['title']);?>" /><?php echo strip_tags($row['title']);?></a>
                       <p class="desc c666"><?php echo $row['body'];?></p>
                   </div>
                 </li>
@@ -125,9 +117,7 @@ $row['update_timestamp']=date('Y-m-d',$row['update_timestamp']);
             </div>
                     </div><!-- /.lay-740 -->
         <div class="lay-240 fr">
-<!--             <div class="xzb-app" style="margin-top:0;">
-                
-            </div> -->
+<?php if(0){?>
             <div class="sub-tab-box mt10">
                 <div class="sub-title">
                     <span class="title h3">编辑推荐</span>
@@ -201,6 +191,7 @@ $row['update_timestamp']=date('Y-m-d',$row['update_timestamp']);
 </ul>
     </div>
             </div><!-- /.sub-tab-box -->
+<?php }?>
             <div class="test mt10">
                 <s id="77" class="xzbTestPos"></s>
             </div>

@@ -7,7 +7,7 @@ require_once(YUN_SEARCH_PATH.'CloudsearchAnalysis.php');
  
 define('CLIENT_ID', '6100619159803307'); // $cleint_id替换成您自己的client id.
 define('CLIENT_SECRET', '237862e841a1529222471eec3e17032a'); // $cleint_secret替换成您自己的密码.
-define('CLIENT_INDEX', 'btv_hk8');
+define('CLIENT_INDEX', 'jok_bus');
 
 /*
 $client = new CloudsearchClient(
