@@ -26,14 +26,7 @@
     <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:6px;">
       <tr>
         <td height="28" align="center">
-        <table cellpadding="0" cellspacing="1" align="center"><form action="DateUpdate.asp?MaxPerPage=31&listtype=title&cid=0&log_Year=2014&log_Month=5&log_Day=0&" method="post" name="PageForm" onsubmit="javascript:window.open('DateUpdate.asp?MaxPerPage=31&listtype=title&cid=0&log_Year=2014&log_Month=5&log_Day=0&&me_page='+ PageForm.page.value,'_self');return false;">
-<tr align="center" height="20">
-<td>&nbsp;<img src="/images/First.gif" border="0" alt="">&nbsp;</td>
-<td>&nbsp;<u><b>1</b></u>&nbsp;</td>
-<td>&nbsp;<a href="DateUpdate.asp?MaxPerPage=31&listtype=title&cid=0&log_Year=2014&log_Month=5&log_Day=0&me_page=2">2</a>&nbsp;</td>
-<td>&nbsp;<a href="DateUpdate.asp?MaxPerPage=31&listtype=title&cid=0&log_Year=2014&log_Month=5&log_Day=0&me_page=2"><img src="/images/Last.gif" border="0" alt="尾页"/></a>&nbsp;</td>
-<td><input type="text" name="page" size="3" value="1" class="PageInput"/><input type="submit" value="GO" name="submit" class="PageInput"/></td>
-</tr></form></table>
+<?php echo $page_string;?>
         </td>
       </tr>
     </table>

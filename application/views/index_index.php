@@ -1,6 +1,6 @@
 <div class="mybody">
 	<div class="leftbody l_left">
-   	  <h2><a href="dateupdate.asp">网站更新记录</a></h2>
+   	  <h2><a href="javascript:void(0);">网站更新记录</a></h2>
       <ul>
 <?php foreach($emuleIndex['monthupdate'] as &$v){?>
 <li><img src="<?php echo $cdn_url;?>/public/images/date.gif?v=<?php echo $version;?>" border=0 style='height:20'><a  href="<?php echo $v['url'];?>" title="查看当前日期的笑话"  target="_blank"><?php echo $v['title'];?></a><span>(更新：<?php echo $v['total'];?>篇)</span></li>

@@ -138,6 +138,7 @@ class Maindex extends Usrbase {
     $kw = $this->viewData['rootCate'][$cid]['name'].',';
     $keywords = $data['info']['name'].','.$kw.$default_seo;
     $title = $data['info']['name'];
+    $seo_description = mb_substr(trim(strip_tags($data['info']['intro'])),0,128);
     // not VIP Admin check verify
     $emu_aid = isset($_COOKIE['hk8_verify_topic_dw'])?strcode($_COOKIE['hk8_verify_topic_dw'],false):'';
     $emu_aid = explode("\t",$emu_aid);
@@ -157,7 +158,7 @@ class Maindex extends Usrbase {
       $this->mem->set($key,$topic_hot,$this->expirettl['3h']);
     }
     $isCollect = $this->emulemodel->getUserIscollect($this->userInfo['uid'],$data['info']['id']);
-    $this->assign(array('isCollect'=>$isCollect,'topic_hot'=>$topic_hot,'verifycode'=>$verifycode,'seo_title'=>$title,'seo_keywords'=>$keywords,'cid'=>$cid,'cpid'=>$cpid,'info'=>$data['info'],'postion'=>$data['postion'],'aid'=>$aid)); 
+    $this->assign(array('seo_description'=>$seo_description,'isCollect'=>$isCollect,'topic_hot'=>$topic_hot,'verifycode'=>$verifycode,'seo_title'=>$title,'seo_keywords'=>$keywords,'cid'=>$cid,'cpid'=>$cpid,'info'=>$data['info'],'postion'=>$data['postion'],'aid'=>$aid)); 
 //echo '<pre>';var_dump($data['info']);exit;
     $ip = $this->input->ip_address();
     $key = sprintf('hitslog:%s:%d',$ip,$aid);
