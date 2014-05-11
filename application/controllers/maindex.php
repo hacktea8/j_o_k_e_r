@@ -22,11 +22,10 @@ class Maindex extends Usrbase {
         $this->view('index_index');
         $output = $this->output->get_output();
         file_put_contents($lock, '');
-        //file_put_contents($view, $output);
+        file_put_contents($view, $output);
         @unlink($lock);
         @chmod($view, 0777);
         echo $output;
-exit;
         return true;
       }
     }
@@ -241,7 +240,7 @@ var_dump($list);exit;
     if(file_exists($lock) && time()-filemtime($lock)<6*3600){
        return false;
     }
-    $this->emulemodel->autoSetVideoOnline(0);
+    $this->emulemodel->autoSetVideoOnline(3);
     $this->emulemodel->setCateVideoTotal();
     file_put_contents($lock,'');
     chmod($lock,0777);

@@ -17,6 +17,26 @@ $(document).ready(function(){
 window.setTimeout("_loadIndex()",5000);
 <?php } ?>
 });
+function _Userlogin(){
+  var timer=null;
+  var _hide=function(){
+    $('.iconList').hide();$('.dropMenu').hide();}
+  var init=function(){
+    $('#user_login').mouseout(function(){
+      timer=setTimeout(_hide,500);});
+    $('#user_login').mouseover(function(){
+     clearTimeout(timer);
+     if($('.iconList').is(":visible") || $('.dropMenu').is(":visible")){
+       return false;}
+     $.get('/maindex/isUserInfo/',function(data){
+       if(data.status==1){
+         $('.iconList').show();$('.dropMenu').hide();
+       }else{
+         $('.iconList').hide();$('.dropMenu').show();}
+      },"json");});}
+  init();}
+_Userlogin();
+var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5900693'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "v1.cnzz.com/stat.php%3Fid%3D5900693%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
 </script>
 <!-- Baidu Button BEGIN -->
 <!-- Baidu Button END -->

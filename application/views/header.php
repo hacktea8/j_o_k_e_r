@@ -9,17 +9,43 @@
 <link href="<?php echo $cdn_url;?>/public/css/global.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
 <link href="<?php echo $cdn_url,'/public/css/',$_c,'_',$_a;?>.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-43439571-4', 'hacktea8.com');
+  ga('send', 'pageview');
+
+</script>
 </head>
 <body>
 <script language="javascript" src="<?php echo $cdn_url;?>/public/js/global.js?v=<?php echo $version;?>"></script>
 <!--网站头部开始-->
 <div class="main">
 	<div class="top">
-    	<div class="top_logo l_left"><a href="/"><img src="<?php echo $cdn_url;?>/public/images/logo.gif?v=<?php echo $version;?>" alt='<?php echo $web_title;?>LOGO' /></a></div>
+    	<div class="top_logo l_left"><a href="/"><img src="<?php echo $cdn_url;?>/public/images/logo.jpg?v=<?php echo $version;?>" alt='<?php echo $web_title;?>LOGO' /></a></div>
         <div class="top_ad l_left">
 <!-- 468-60 --></div>
         <div class="top_login l_right" id="userstat">
 <span>
+   <div id="user_login">
+   <span class="user">Œ</span>
+   <div class="iconList" style="display: none;">
+   <ul>
+<?php if(0){?>
+    <li><a href="/maindex/fav/" title="我的收藏"><em class="iconfont">ũ</em><cite>我的收藏</cite></a></li>
+<?php }?>
+    <li><a href="/maindex/logout" title="登出"><em class="iconfont">ơ</em><cite>登出</cite></a></li>
+   </ul>
+   </div>
+   <div class="dropMenu" style="display: none;">
+   <ul>
+    <li><a class="btn" title="登入" href="/maindex/login" target="_blank">登入</a></li>
+   </ul>
+   </div>
+ </div>
 <?php if(0){?>
 <a href="/yuanchuangxiaohua/details.asp" target="_blank">发表笑话,赚取奖金</a> |  
 <?php }?>
@@ -30,13 +56,9 @@
         <div class="top_menu">
         	<ul>
                 <li><a href="/" >首 页</a></li>
-                <li><a href="/jokes_list.shtml">最新笑话</a></li>
-                <li><a href="/jokes_hot.shtml">笑话排行</a></li>
-                <li></li>
-                <li></li>
-                <li></li>
-               <li></li>
-              <li style="width:92px;"><a href="/jokes_top.shtml">笑话风云榜</a></li>
+<?php foreach($topMenu as &$v){?>
+                <li><a href="<?php echo $v['url'];?>"><?php echo $v['name'];?></a></li>
+<?php }?>
             </ul>
             <div class="top_count"></div>
             <div class="top_new"><img src="<?php echo $cdn_url;?>/public/images/newpic.gif?v=<?php echo $version;?>" alt="新" width="22" height="13" border="0" /></div>

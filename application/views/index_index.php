@@ -18,7 +18,7 @@
     <div class="rightbody l_right">
       <div class="title l_left b4">
         <h3 class="l_left"><a href="list.htm">最新笑话</a></h3>
-        <b>+ <a href="/list18_1.htm" target="_blank">经典笑话</a> + <a href="/list43_1.htm" target="_blank">冷笑话</a></b> </div>
+        <b>+ <a href="<?php echo $rootCate[13]['url'];?>" target="_blank">经典笑话</a> + <a href="<?php echo $rootCate[15]['url'];?>" target="_blank"><?php echo $rootCate[15]['name'];?></a></b> </div>
       <div class="clear"></div>
       <div class="newcontent l_left">
         <ul>

@@ -24,11 +24,20 @@ class Usrbase extends Webbase {
       $rootCate = $this->emulemodel->getCateByCid(0);
       $this->_rewrite_list_url($rootCate);
       $this->mem->set('rootCate',$rootCate,$this->expirettl['30m']);
-    } 
+    }
+    $topMenu = $this->mem->get('topMenu');
+    if( empty($topMenu)){
+      $menukey = array_rand($rootCate,10);
+      $topMenu = array();
+      foreach($menukey as $k){
+        $topMenu[$k] = $rootCate[$k];
+      }
+      $this->mem->set('topMenu',$topMenu,$this->expirettl['3h']);
+    }
     $this->assign(array(
     'seo_keywords'=>$this->seo_keywords,'seo_description'=>$this->seo_description,'seo_title'=>$this->seo_title
     ,'showimgapi'=>$this->showimgapi,'error_img'=>$this->showimgapi.'3958009_0000671092.jpg','hotTopic'=>$hotTopic,'rootCate'=>$rootCate,
-    'cpid'=>0,'cid'=>0
+    'cpid'=>0,'cid'=>0,'topMenu'=>$topMenu
     ,'editeUrl' => '/edite/index/emuleTopicAdd'
     ));
     $this->_get_postion();
