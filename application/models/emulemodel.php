@@ -42,7 +42,7 @@ class emuleModel extends baseModel{
   }
   public function getMonthUpdateList($limit = 6){
     $return = array();
-    for($i=0;$i<6;$i++){
+    for($i=0;$i<$limit;$i++){
       $start = date('Ym',strtotime('-'.$i.' month')).'01';
       $end = date('Ym',strtotime('-'.($i-1).' month')).'01';
       $sql = sprintf("SELECT COUNT(*) as total FROM %s WHERE `flag`=1 AND `onlinedate`>=%d AND `onlinedate`<%d",$this->db->dbprefix('emule_article'),$start,$end);
@@ -54,11 +54,22 @@ class emuleModel extends baseModel{
     }
     return $return;
   }
-  public function getArticleListByDate($date,$order,$page,$limit){
+  public function getArticleTotalByDate($date){
     $datetime = strtotime($date);
     $start = date('Ym',$datetime).'01';
     $end = date('Ym',strtotime('+1 month',$datetime)).'01';
-    $sql = sprintf("SELECT * as total FROM %s WHERE `flag`=1 AND `onlinedate`>=%d AND `onlinedate`<%d",$this->db->dbprefix('emule_article'),$start,$end);
+    $sql = sprintf("SELECT COUNT(*) as total FROM %s as a WHERE `flag`=1 AND `onlinedate`>=%d AND `onlinedate`<%d",$this->db->dbprefix('emule_article'),$start,$end);
+    $row = $this->db->query($sql)->row_array();
+    return $row?$row['total']:0;
+  }
+  public function getArticleListByDate($date,$order,$page=1,$limit=25){
+    $datetime = strtotime($date);
+    $start = date('Ym',$datetime).'01';
+    $end = date('Ym',strtotime('+1 month',$datetime)).'01';
+    $page = $page - 1;
+    $page = $page>0 ?$page:0;
+    $page = $page*$limit;
+    $sql = sprintf("SELECT %s FROM %s as a WHERE `flag`=1 AND `onlinedate`>=%d AND `onlinedate`<%d LIMIT %d,%d",$this->_dataStruct,$this->db->dbprefix('emule_article'),$start,$end,$page,$limit);
     $list = $this->db->query($sql)->result_array();
     foreach($list as &$v){
       $v['url'] = $this->get_link('topic',$v['id']);
@@ -211,12 +222,12 @@ class emuleModel extends baseModel{
      return $res = array(array('id'=>$parinfo[0]['id'],'name'=>$parinfo[0]['name']),array('id'=>$subinfo['id'],'name'=>$subinfo['name']));
   }
 
-  public function getEmuleTopicByAid($aid,$uid=0,$isadmin=false){
+  public function getEmuleTopicByAid($aid,$uid=0,$isadmin=false,$edit = 0){
      $where = '';
      if(!$aid){
         return false;
      }
-     if($uid && !$isadmin)
+     if($uid && !$isadmin && $edit)
        $where = sprintf(' AND `uid`=%d LIMIT 1',$uid);
 
      $table = sprintf("emule_article_content%d",$aid%10);
@@ -244,22 +255,26 @@ class emuleModel extends baseModel{
      $data = $this->db->query($sql)->row_array();
      return $data;
   }
+  public function copy_array($array,$keys){
+    $return = array();
+    foreach($keys as $v){
+      if(isset($array[$v])){
+        $return[$v] = $array[$v];
+      }
+    }
+    return $return;
+  }
   public function setEmuleTopicByAid($uid=0,$data,$isadmin=false){
      //过滤字段
-     $header = array();
-     $header['id'] = $data['header']['id'];
-     $header['cid'] = $data['header']['cid'];
-     $header['name'] = $data['header']['name'];
-     $header['cover'] = $data['header']['cover'];
+     $header = $this->copy_array($data['header'],array('id','cid','name','cover','uid','uname'));
      $header['utime'] = time();
-     $body = array();
-     $body['keyword'] = $data['header']['tags'];
-     $body['downurl'] = $data['body']['downurl'];
-     $body['vipdwurl'] = $data['body']['vipdwurl'];
+     $body = $this->copy_array($data['body'],array('keyword','intro'));
      $body['intro'] = $data['body']['intro'];
      if(isset($header['id']) && $header['id']){
-        $this->_datatopicStruct = ' a.`id` ';
+        //$tmp = $this->_datatopicStruct;
+        //$this->_datatopicStruct = ' a.`id` ';
         $check = $this->getEmuleTopicByAid($header['id'],$uid,$isadmin);
+       // $this->_datatopicStruct = $tmp;
         if( !isset($check['info']['id'])){
            return false;
         }
@@ -270,7 +285,7 @@ class emuleModel extends baseModel{
         $table = sprintf("emule_article_content%d",$where['id']%10);
         $sql = $this->db->update_string($this->db->dbprefix($table),$body,$where);
         $this->db->query($sql);
-        return $data['id'];
+        return $where['id'];
      }
      $header['uid'] = $uid;
      unset($header['id']);

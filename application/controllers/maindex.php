@@ -32,9 +32,33 @@ class Maindex extends Usrbase {
     exit();
   }
   public function update_by_date($date,$order=0,$page=1){
+    $page = intval($page);
     $date = intval($date);
+    $limit = 25;
     $lists = $this->emulemodel->getArticleListByDate($date,$order,$page,$limit);
-    $this->assign(array(
+    $total = $this->emulemodel->getArticleTotalByDate($date);
+    $update_list = $this->emulemodel->getMonthUpdateList(15);
+    $this->load->library('pagination');
+    $config['base_url'] = sprintf('/maindex/update_by_date/%d/%d/',$date,$order);
+    $config['total_rows'] = $total;
+    $config['per_page'] = $limit;
+    $config['first_link'] = '第一页';
+    $config['next_link'] = '下一页';
+    $config['prev_link'] = '上一页';
+    $config['last_link'] = '最后一页';
+    $config['cur_tag_open'] = '<span class="current">';
+    $config['cur_tag_close'] = '</span>';
+    $config['suffix'] = '.html';
+    $config['use_page_numbers'] = TRUE;
+    $config['num_links'] = 5;
+    $config['cur_page'] = $page;
+
+    $this->pagination->initialize($config);
+    $page_string = $this->pagination->create_links();
+    $date = date('Y年m月',strtotime($date));
+    $seo_title = '笑话月更新';
+    $this->assign(array('date'=>$date,'update_list'=>$update_list,
+    'seo_title'=>$seo_title,
     'page_string'=>$page_string,'infolist'=>$lists));
     $this->view('index_update_by_date');
   }
@@ -87,7 +111,7 @@ class Maindex extends Usrbase {
        $data = array();
        $data = $this->mem->get('emulelist'.$cid.'-'.$page.$order);
 //echo '<pre>';var_dump($data);exit;
-       if( 1 || empty($data)){
+       if( empty($data)){
          $data = $this->emulemodel->getArticleListByCid($cid,$order,$page);
          $this->mem->set('emulelist'.$cid.'-'.$page.$order,$data,$this->expirettl['1h']);
        }
@@ -119,7 +143,7 @@ class Maindex extends Usrbase {
     $keywords = $this->viewData['rootCate'][$cid]['name'].$this->seo_keywords;
     $title = $this->viewData['rootCate'][$cid]['name'];
     $this->assign(array('seo_title'=>$title,'seo_keywords'=>$keywords,'infolist'=>$data
-    ,'page_string'=>$page_string,'cid'=>$cid));
+    ,'page_string'=>$page_string,'cid'=>$cid,'page'=>$page));
     $this->view('index_lists');
   }
   public function topic($aid){
@@ -173,12 +197,14 @@ class Maindex extends Usrbase {
   public function search($q='',$order = 0,$page = 1){
     $q = $q ? $q:$this->input->get('q');
     $q = urldecode($q);
+    $q = htmlentities($q);
     $page = intval($page);
     $page = $page < 1 ? 1: $page;
     $list = array();
+    $pageSize = 25;
     if($q){
       $this->load->library('yunsearchapi');
-      $opt = array('query'=>$q,'start'=>$page,'hits'=>25);
+      $opt = array('query'=>$q,'start'=>$page,'hits'=>$pageSize);
       $this->yunsearchapi->search($list,$opt);
       $hotKeywords = $this->yunsearchapi->getTopQuery($num=8,$days=30);
       //var_dump($hotKeywords);exit;
@@ -202,7 +228,7 @@ var_dump($list);exit;
     $this->load->library('pagination');
     $config['base_url'] = sprintf('/maindex/search/%s/%d/',urlencode($q),$order);
     $config['total_rows'] = $list['result']['viewtotal'];
-    $config['per_page'] = 25;
+    $config['per_page'] = $pageSize;
     $config['first_link'] = '第一页';
     $config['next_link'] = '下一页';
     $config['prev_link'] = '上一页';

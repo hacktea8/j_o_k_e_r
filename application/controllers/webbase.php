@@ -8,6 +8,7 @@ class Webbase extends CI_Controller {
   public $viewData = array();
   protected $userInfo = array('uid'=>0,'uname'=>'','isvip'=>0,'isadmin'=>0);
   public $adminList = array(1);
+  public $adminUidList = array(811);
   protected $_c = 'index'; 
   protected $_a = 'index'; 
   
@@ -65,6 +66,9 @@ class Webbase extends CI_Controller {
       redirect($this->config->item('login_url').$this->config->item('base_url'));
     }
     if(in_array($this->userInfo['groupid'],$this->adminList)){
+      return true;
+    }
+    if(in_array($this->userInfo['uid'],$this->adminUidList)){
       return true;
     }
     foreach($this->userInfo['groups'] as $gid){

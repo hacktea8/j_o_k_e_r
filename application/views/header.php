@@ -50,7 +50,7 @@
 <a href="/yuanchuangxiaohua/details.asp" target="_blank">发表笑话,赚取奖金</a> |  
 <?php }?>
 </span><br>
- <a href="/User/JokeAdd" target="_blank"><img src="<?php echo $cdn_url;?>/public/images/fbjoke.gif?v=<?php echo $version;?>" alt="发表笑话" border="0"></a>
+ <a href="javascript:void(0);" target="_blank"><img src="<?php echo $cdn_url;?>/public/images/fbjoke.gif?v=<?php echo $version;?>" alt="发表笑话" border="0"></a>
 </div>
         <div class="clear"></div>
         <div class="top_menu">

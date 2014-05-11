@@ -31,21 +31,15 @@ class Edite extends Usrbase {
     if(isset($header['name'])){
          $body = $this->input->post('body');
 //var_dump($body);exit;
-         $this->emulemodel->setEmuleTopicByAid($this->userInfo['uid'],$data = array('header'=>$header,'body'=>$body),$this->userInfo['isadmin']);
-         $id = $header['id'];
+         $aid = $this->emulemodel->setEmuleTopicByAid($this->userInfo['uid'],$data = array('header'=>$header,'body'=>$body),$this->userInfo['isadmin']);
+         $id = $aid;
     }
     $info = array();
     if($id){
-       $info = $this->emulemodel->getEmuleTopicByAid($id,$this->userInfo['uid'], $this->userInfo['isadmin']);
+       $info = $this->emulemodel->getEmuleTopicByAid($id,$this->userInfo['uid'], $this->userInfo['isadmin'],1);
        $info = $info['info'];
-       if(isset($info['id'])){
-          $catelist = $this->_getCateListById($info['cid'], $pid = 0);
-          $pcate = array_pop($catelist);
-          $pid = $pcate['pid'];
-       }
     }
-    $this->assign(array('subCate'=>$catelist,'pid'=>$pid,'_a'=>'emuleTopicAdd','info'=>$info,'imguploadapiurl'=>$this->imguploadapiurl
-    ,'postion'=>array(array('url'=>'#','name'=>'编辑'))
+    $this->assign(array('_a'=>'emuleTopicAdd','info'=>$info,'imguploadapiurl'=>$this->imguploadapiurl
     ));
     $this->view('edite_emuleTopicAdd');
   }

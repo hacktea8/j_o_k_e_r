@@ -34,22 +34,14 @@
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td width="393" align="left" background="<?php echo $cdn_url;?>/public/images/main_bg.gif?v=<?php echo $version;?>" class="main_title" style="padding:2px 0 0 6px; ">笑话列表</td>
-          <td width="255" align="left" valign="bottom"><form id="form1" name="form1" method="post" action="" style="margin-bottom:0px">
-            <input name="cid" type="hidden" id="cid" value="<?php echo $cid;?>" />
+          <td width="255" align="left" valign="bottom">
             显示方式：
-        <select name="order" onchange="javascript:form1.submit()">
+        <select name="order" id="list_order" onchange="change_list();">
           <option value="1" >推荐</option>
           <option value="0" selected>最新</option>
           <option value="2">热门</option>
         </select>
-	每页个数：
-        <select name="size" size="1" id="MaxPerPage" onchange="javascript:form1.submit()">
-          <option value="6"  >6</option>
-          <option value="12" >12</option>
-          <option value="24" >24</option>
-          <option value="50" >50</option>
-        </select>
-          </form></td>
+        </td>
         </tr>
       <tr bgcolor="#F3F3F3">
       <td height="2" colspan="2"></td>
@@ -66,7 +58,7 @@
 <?php foreach($infolist as &$v){?>
       <tr>
         <td width="15" align="left"><img src="<?php echo $cdn_url;?>/public/images/d02.gif?v=<?php echo $version;?>" width="8" height="10" /></td>
-        <td width="307" align="left"><a href="<?php echo $v['url'];?>" class="main_14" target="_blank" ><?php echo $v['name'];?></a></td>
+        <td width="307" align="left"><a href="<?php echo $v['url'];?>" class="main_14" target="_blank" ><?php echo $v['name'];?></a> <?php if($uinfo['uid'] === $info['uid'] || $uinfo['isadmin']){echo "<a href='$editeUrl/$info[id]' target='_blank'>编辑</a>"; }?></td>
         <td width="141" align="left">浏览: <?php echo $v['hits'];?> 次</td>
         <td width="72" align="left"><span class="date">
           <?php echo $v['ptime'];?></span></td>
@@ -114,3 +106,9 @@
 <div style="margin-top:12px; margin-bottom:6px;">
 <!-- 广告位：阿里妈妈950-90 -->
 </div>
+<script type="text/javascript">
+function change_list(){
+var order = $('#list_order').val();
+window.location.href="/maindex/lists/3/"+order+"/<?php echo $page;?>.shtml";
+}
+</script>

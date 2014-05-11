@@ -6,7 +6,9 @@
 <div class="mob_leftd">
 <div class="mob_left l_left"> 
 <div class="mob_left_b2 b2">
-<h1><a href="/" title="返回首页" class="user_14">首页</a> -> <a  href="<?php echo $rootCate[$info['cid']]['url'];?>" title="查看此类型的所有笑话" class="user_14"><?php echo $rootCate[$info['cid']]['name'];?></a> -> <?php echo $info['name'];?></h1>
+<h1><a href="/" title="返回首页" class="user_14">首页</a> -> <a  href="<?php echo $rootCate[$info['cid']]['url'];?>" title="查看此类型的所有笑话" class="user_14"><?php echo $rootCate[$info['cid']]['name'];?></a> -> <?php echo $info['name'];?>
+<?php if($uinfo['uid'] === $info['uid'] || $uinfo['isadmin']){echo "<a href='$editeUrl/$info[id]' target='_blank'>编辑</a>"; }?>
+</h1>
 <span class="data l_right">浏览量: <?php echo $info['hits'];?>次</span>
 </div>
 <div class="clear"></div>
