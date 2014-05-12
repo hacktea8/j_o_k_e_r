@@ -14,7 +14,7 @@ class Edite extends Usrbase {
 //    $this->load->model('indexmodel');
     // check login 
     if( !$this->checkLogin()){
-     redirect('/');
+     header('Location: /');
     }
   }
   public function index($type, $id = 0){

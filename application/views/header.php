@@ -34,10 +34,8 @@
    <span class="user">Œ</span>
    <div class="iconList" style="display: none;">
    <ul>
-<?php if(0){?>
     <li><a href="/maindex/fav/" title="我的收藏"><em class="iconfont">ũ</em><cite>我的收藏</cite></a></li>
-<?php }?>
-    <li><a href="/maindex/logout" title="登出"><em class="iconfont">ơ</em><cite>登出</cite></a></li>
+    <li><a href="/maindex/loginout" title="登出"><em class="iconfont">ơ</em><cite>登出</cite></a></li>
    </ul>
    </div>
    <div class="dropMenu" style="display: none;">

@@ -1,116 +1,97 @@
-<div id="wrap">
-<div id="nav">
-
-<div class="box_7 rightBox">
-<div class="rightTitle title_bg">
-<div class="h3"><span>用户信息</span></div>
-</div>
-<div class="main" style="padding:0 5px;">
-<dl id="libCatalog">
- <dd><a href="javascript:void(0);">&gt;<?php echo $uinfo['uname'];?><span class="recordCount">(VIP: <?php echo $uinfo['isvip'] ? $uinfo['isvip'] : '非VIP';?>)</span></a></dd>
-</dl>
-</div>
-</div>
-<div style="height:10px;background:#fff;"></div>
-<?php if(0){ ?>
-<div class="box_7 rightBox">
-<div class="rightTitle title_bg">
-<div class="h3"><span>相关链接</span></div>
-</div>
-<div class="main" style="padding:10px;">
-<dl id="someLinks">
-<dd><a href="#" title="订阅本站资源">订阅本站资源</a></dd>
-<dd><a href="#" id="emuleOld" title="Download eMule">电驴(eMule)经典版下载</a></dd>
-<dd><a href="#" title="get firefox" id="getfirefox" target="_blank">推荐使用 Firefox 浏览器</a></dd>
-<dd style=" clear:both;"></dd>
-</dl>
-</div>
-</div>
-<?php } ?>
-<div style="height:10px;background:#fff;"></div>
-<!---->
-<div class="box_7 rightBox">
-<div class="rightTitle title_bg">
-<div class="h3"><span>今日热门</span></div>
-</div>
-<div class="main" style="padding:10px;">
-<!---->
-<dl class="indexLeftItem">
-<?php
-foreach($hotTopic as $row){
-?>
-<dd class="leftMiddle">
-   <a href="<?php echo $row['url'];?>" onClick="" style="text-decoration:none;" id="entry_link_<?php echo $row['id'];?>"><img class="lazy hot_img" data-original="<?php echo $showimgapi,$row['cover'];?>" title="<?php echo $row['name'];?>" style="width: 100px; height: 100px" alt="<?php echo $row['name'];?>" /><noscript><img src="<?php echo $showimgapi,$row['cover'];?>" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" class="hot_img" /></noscript></a><br>
-<a href="<?php echo $row['url'];?>" onClick=""><?php echo $row['name'];?></a>
-            </dd>
-<?php
-}
-?>
-            
-</dl>
-
+<div class="top_adreg" style="width:960px; background:#F5F5F5;">
+<!-- 广告位：频道页-960*90，所有TOP位置 -->
 </div>
 
 </div>
-<div style="height:10px;background:#fff;"></div>
-<p style="text-align: center;">
+<div class="clear"></div>
+<div align="center">
+<table width="960" height="157" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:8px;">
+  <tr valign="top">
+    <td width="652">
+	
+	<table width="100%" height="27" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="27" align="left" valign="middle" class="b4">
+          &nbsp;&nbsp;<b><span class="user_14"><?echo $date;?>收藏的笑话大全列表</span></b></td>
+        </tr>
+    </table>
 
-</p>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="b3">
+  <tr>
+    <td>
+    
+<table width="640" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+<td height="30" align="left" valign="bottom" style="padding-top:4px; padding-left:9px;">
+<!-- 广告位：640*26 sogou -->
+</td>
+</tr>
+</table>
+<?php foreach($infolist as &$v){?>
+    <table width="646" height="30" border="0" align="center" cellpadding="0" cellspacing="0" background="<?php echo $cdn_url;?>/public/images/d01.gif?v=<?php echo $version;?>">
+      <tr>
+        <td width="23" align="center"><img src="<?php echo $cdn_url;?>/public/images/d02.gif?v=<?php echo $version;?>" width="9" height="9" /></td>
+        <td width="397" align="left"><a href="<?php echo $v['url'];?>" class="main_14" target="_blank" title="<?php echo $v['name'];?>"><?php echo $v['name'];?></a></td>
+        <td width="243" align="left">收藏: <?php echo $v['atime'];?> </td>
+      </tr>
+    </table>	  
+<?php }?>
+	  
+    <table width="99%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin-top:6px;">
+      <tr>
+        <td height="28" align="center">
+        <table cellpadding="0" cellspacing="1" align="center">
+<tr align="center" height="20">
+<td class="page_string"><?php echo $page_string;?></td>
+</tr>
+</table>
+        </td>
+      </tr>
+    </table>
+</td>
+  </tr>
+</table>
+ </td>
+    <td width="308" align="right">
+<table width="300" border="0" cellpadding="0" cellspacing="0" style=" margin-bottom:4px;">
+   <tr>
+   <td valign="top">
+<!-- 广告位：百度300*250 -->
+</td>
+   </tr>
+</table>
+       <table width="300" height="26" border="0" cellpadding="0" cellspacing="0">
+         <tr>
+           <td align="left" class="user_14 b4">　<strong>笑话更新记录</strong></td>
+         </tr>
+       </table>
 
-</div>
-<div id="content">
+<table width="300" border="0" cellpadding="4" cellspacing="0" class="b3" >
+<tr valign="top">
+<td align="left" bgcolor="#FFFFFF" class="main_14">
+<?php foreach($update_list as &$v){?>
+<img src="<?php echo $cdn_url;?>/public/images/date.gif?v=<?php echo $version;?>" border=0 style='height:20'><a class="12title" href="<?php echo $v['url'];?>" title="查看当前日期的笑话" ><?php echo $v['title'];?></a><span class="txt12">(更新：<?php echo $v['total'];?>篇)</span><br/>
+<?php }?>
+ </td>
+</tr>
+</table>
 
-    <ul class="topic-list" style="*margin-top:-19px">
- <li id="searchBar">
-<form id="advance_search_form" method="get" action="/index/collect/" target="_blank">
-    <div class="left_class_order" style="margin-bottom:10px!important;">
-        <span>
-        排序:
-        <span class="left_class_new left_class_filter">
-        <a href="javascript:void(0);">发布
-                    <img alt="<?php echo $web_title;?>" title="<?php echo $web_title;?>" src="<?php echo $img_url;?>new02.gif?v=<?php echo $version;?>">
-        </a>
-                <img src="<?php echo $img_url;?>newtopic_bg.gif?v=<?php echo $version;?>" alt="<?php echo $web_title;?>" title="<?php echo $web_title;?>">
-        更新
-                    <img src="<?php echo $img_url;?>new02_red.gif?v=<?php echo $version;?>" alt="<?php echo $web_title;?>" title="<?php echo $web_title;?>">
-                </span>
-    </span>
-    <select name="sort" id="sort" onChange="" class="selectClass">
-        <option value="default">默认排序</option>
-        <option value="post">发布时间从老到新</option>
-        <option value="rpost">发布时间从新到老</option>
-        <option value="update">更新时间从老到新</option>
-        <option value="rupdate" selected="selected">更新时间从新到老</option>
-    </select>
-    <span class="left_class_filter"><img alt="<?php echo $web_title;?>" title="<?php echo $web_title;?>" src="<?php echo $img_url;?>line.gif?v=<?php echo $version;?>"></span>
-        </div>
-</form></li>
-<li><ul id="favlist">
-<?php
-foreach($infolist as $row){
-?>
-  <li>
-   <div class="imgcover"> <a href="<?php echo $row['url'];?>" onClick=""><img class="lazy file_img" data-original="<?php echo $showimgapi,$row['cover'];?>" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" /><noscript><img src="<?php echo $showimgapi,$row['cover'];?>" title="<?php echo $row['name'];?>" alt="<?php echo $row['name'];?>" class="file_img" /></noscript></a>
-</div>
-<h3>收藏: <span class="date-time"><?php echo $row['atime'];?></span></h3>
-<h3>更新: <span class="date-time"><?php echo $row['utime'];?></span></h3>
- <h3>
-<span class="left_topics_class_sort"><a href="<?php echo $row['curl'];?>"><?php echo $row['cname'];?></a></span> <a href="<?php echo $row['url'];?>" onClick=""><?php echo $row['name'];?></a>
- </h3>
-  </li>
-<?php
-} 
-?>
-</ul>
-</li>	
-        </ul>
-<div class="pnav">
-<div class="pages-nav" style="margin: 10px 7px 0px 0px;padding:0 0 20px 0px!important;padding-bottom:0;">
-<?php echo $page_string;?>
+<table width="300" border="0" cellpadding="0" cellspacing="0" style=" margin-bottom:3px;">
+<tr>
+<td>
+<!-- 广告位：336*280 谷歌 -->
+</td>
+</tr>
+</table>
 
-<span href="#" style="display:none">  </span>
+</td>
+  </tr>
+</table>
 </div>
+
+<div class="clear" style="margin-top:6px; "></div>
+<div class="foot">    
+
+<div style="margin-top:12px; margin-bottom:6px;">
+<!-- 广告位：阿里妈妈950-90 -->
 </div>
-</div><!--End of content-->
-<div style="clear:both"></div>
-</div><!-- End of page wrap-->

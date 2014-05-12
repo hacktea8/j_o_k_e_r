@@ -7,7 +7,7 @@
 
 .leftbody{width:250px;color:#999999; font:12px;background-color:#FFFFFF;}
 
-.leftbody h2{height:26px; padding-top:2px; line-height:23px; border-left:1px solid #d6e7d6;border-top:1px solid #d6e7d6;border-right:1px solid #d6e7d6;background:url(../public/images/left_bg.gif);font-size:14px; padding-left:10px; color:#408b09;}
+.leftbody h2{height:26px; padding-top:2px; line-height:23px; border-left:1px solid #d6e7d6;border-top:1px solid #d6e7d6;border-right:1px solid #d6e7d6;background:url(/public/images/left_bg.gif);font-size:14px; padding-left:10px; color:#408b09;}
 
 .leftbody h2 a,a:link,a:visited{ color:#408b09;}
 .leftbody h2 a:hover{color:#ff6600;text-decoration:underline;}
@@ -387,7 +387,7 @@ a.top_txt:active { font-size: 12px; color: #000; text-decoration: none; }
 */
 /* 全局样式 */
 *{ margin:0; padding:0;}
-body{line-height:23px;background:url(/i_bg/bg.jpg);background-repeat: repeat-x;background-color:#FFFFFF;font-style:normal;font-family:"宋体";}
+body{line-height:23px;background:url(/public/images/bg.jpg);background-repeat: repeat-x;background-color:#FFFFFF;font-style:normal;font-family:"宋体";}
 
 h1,h2,h3,h4{ list-style:none; font-size:14px; padding-left:14px;}
 dl,dd,dt,ul,li{ list-style:none; font-size:14px; line-height:23px;}
@@ -414,7 +414,7 @@ a:hover{ text-decoration:underline; color:#FF3300;font-size:14px;}
 /* 头部菜单样式 */
 
 
-.top{font-size:12px;background:url(/i_bg/banner_bg.jpg);background-repeat: repeat-x;}
+.top{font-size:12px;background:url(/public/images/banner_bg.jpg);background-repeat: repeat-x;}
 .top_logo{width:300px; padding-top:1px; height:87px;}
 .top_ad{width:300px;text-align:center; padding-top:14px;}
 .top_ad img{ width:468px; height:60px;}

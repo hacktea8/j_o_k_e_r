@@ -14,7 +14,7 @@ class Maindex extends Usrbase {
     }
     $view .= 'index.html';
     $lock = $view . '.lock';
-    if( !file_exists($view) || (time() - filemtime($view)) > 3*3600 ){
+    if( !file_exists($view) || (time() - filemtime($view)) > 1*3600 ){
       if(!file_exists($lock)){
         $emuleIndex = $this->emulemodel->getEmuleIndexData();
 //echo "<pre>";var_dump($emuleIndex);exit;
@@ -64,7 +64,7 @@ class Maindex extends Usrbase {
   }
   public function fav($page = 1){
     if( !isset($this->userInfo['uid']) || !$this->userInfo['uid']){
-      redirect('/');
+      header('Location: /');
     }
     $page = intval($page);
     $limit = 30;
@@ -73,10 +73,11 @@ class Maindex extends Usrbase {
     if($total && $endP >= $page){
       $lists = $this->emulemodel->getUserCollectList($this->userInfo['uid'],$order = 'new',$page,$limit);
     }
+    $update_list = $this->emulemodel->getMonthUpdateList(10);
     $this->load->library('pagination');
-    $config['base_url'] = sprintf('/index/collect/');
+    $config['base_url'] = sprintf('/maindex/fav/');
     $config['total_rows'] = $total;
-    $config['per_page'] = 25;
+    $config['per_page'] = $limit;
     $config['first_link'] = '第一页';
     $config['next_link'] = '下一页';
     $config['prev_link'] = '上一页';
@@ -91,7 +92,7 @@ class Maindex extends Usrbase {
     $this->pagination->initialize($config);
     $page_string = $this->pagination->create_links();
     $this->assign(array(
-    'page_string'=>$page_string,'infolist'=>$lists));
+    'page_string'=>$page_string,'infolist'=>$lists,'update_list'=>$update_list));
     $this->view('index_collect');
   }
   public function addCollect($aid){

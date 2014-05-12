@@ -42,6 +42,7 @@
 
 <div class="ad468_date">
 <b>
+<a class="addFav" id="addFav"><img src="<?php echo $cdn_url,'/public/images/',$isCollect?'del':'','favorite.gif';?>" id="addFavBtn" alt="<?php echo $isCollect?'取消':''?>收藏该资源" /></a>
  <!-- GG-2 --></b>
 <i>发布时间：<?php echo $info['ptime'];?></i>
 </div>
@@ -162,7 +163,18 @@ location=prevpage;
 
 </div>
 <!--右侧结束-->
-
 <div class="clear"></div>
-
 </div>
+<script type="text/javascript">
+$('#addFav').click(function(){
+var uid = <?php echo $uinfo['uid']?0:1;?>;
+if(uid){return false;}
+$.get("/maindex/addCollect/<?php echo $info['id'];?>", function(result){
+  if(result.status==1){
+    $('#addFavBtn').attr("src","<?php echo $cdn_url,'/public/images/';?>delfavorite.gif");
+  }else{
+    $('#addFavBtn').attr("src","<?php echo $cdn_url,'/public/images/';?>favorite.gif");
+  }
+},'json');
+});
+</script>

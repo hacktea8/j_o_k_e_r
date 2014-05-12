@@ -273,7 +273,7 @@ class emuleModel extends baseModel{
      if(isset($header['id']) && $header['id']){
         //$tmp = $this->_datatopicStruct;
         //$this->_datatopicStruct = ' a.`id` ';
-        $check = $this->getEmuleTopicByAid($header['id'],$uid,$isadmin);
+        $check = $this->getEmuleTopicByAid($header['id'],$uid,$isadmin,1);
        // $this->_datatopicStruct = $tmp;
         if( !isset($check['info']['id'])){
            return false;
@@ -304,7 +304,7 @@ class emuleModel extends baseModel{
         return false;
      }
      $this->_datatopicStruct = ' `id` ';
-     $check = $this->getEmuleTopicByAid($aid,$uid,$isadmin);
+     $check = $this->getEmuleTopicByAid($aid,$uid,$isadmin,1);
      if( !isset($check['id'])){
         return false;
      }
