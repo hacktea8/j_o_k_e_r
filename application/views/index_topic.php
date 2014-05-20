@@ -15,6 +15,7 @@
 <div>
   
 <div class="ad468_15_1 l_left">
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
 <!-- GG-1 -->
 </div>
 
@@ -168,7 +169,7 @@ location=prevpage;
 <script type="text/javascript">
 $('#addFav').click(function(){
 var uid = <?php echo $uinfo['uid']?0:1;?>;
-if(uid){return false;}
+if(uid){alert('抱歉！您还未登录。请先登录!!');return false;}
 $.get("/maindex/addCollect/<?php echo $info['id'];?>", function(result){
   if(result.status==1){
     $('#addFavBtn').attr("src","<?php echo $cdn_url,'/public/images/';?>delfavorite.gif");
@@ -177,4 +178,5 @@ $.get("/maindex/addCollect/<?php echo $info['id'];?>", function(result){
   }
 },'json');
 });
+window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
 </script>
