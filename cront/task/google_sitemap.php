@@ -67,19 +67,17 @@ for($p = $startIndex;;$p++){
  foreach($list as $val){
    $tmp .= '<url><loc>'.$base_url.article_url($val['id']).'</loc><lastmod>'.date('Y-m-d',$val['utime']).'</lastmod><changefreq>weekly</changefreq><priority>1</priority></url>';
   }
-   if(($tmp)){
+   if($tmp){
       $tmp = $sitemap.$tmp.'</urlset>';
       $index_file = BASEPATH.'google_sitemap'.$p.'.xml';
       file_put_contents($index_file,$tmp);
-      if($new_index || $index >=0){
-        $model->addIndex(array('type'=>$type,'index'=>$index,'update'=>$val['utime']));
-      }
+      $model->addIndex(array('type'=>$type,'index'=>$p,'aid'=>0,'update'=>$val['utime']));
       $tmp = '';
      
 sleep(5);
    }
    if(count($list) == $countLimit){
-      $model->setIndex(array('aid'=>1),array('index'=>$p,'type'=>$type));
+      $model->setIndex(array('aid'=>1),array('`index`'=>$p,'`type`'=>$type));
    }
    if(empty($list)){
      break;
