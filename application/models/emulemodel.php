@@ -162,9 +162,11 @@ class emuleModel extends baseModel{
   public function getArticleListByCid($cid='',$order=0,$page=1,$limit=25){
      switch($order){
        case 1:
-       $order=' ORDER BY a.hits ASC '; break;
+       //$order=' ORDER BY a.hits ASC '; break;
+       $order=' ORDER BY a.ptime DESC '; break;
        case 2:
-       $order=' ORDER BY a.hits DESC '; break;
+       //$order=' ORDER BY a.hits DESC '; break;
+       $order=' ORDER BY a.ptime ASC '; break;
        default:
        $order=' ORDER BY a.ptime DESC ';
      }
@@ -223,7 +225,7 @@ class emuleModel extends baseModel{
   }
 
   public function getEmuleTopicByAid($aid,$uid=0,$isadmin=false,$edit = 0){
-     $where = '';
+     $where = ' LIMIT 1';
      if(!$aid){
         return false;
      }
