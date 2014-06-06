@@ -150,6 +150,15 @@ class Maindex extends Usrbase {
   public function topic($aid){
     $aid = intval($aid);
     $data = $this->emulemodel->getEmuleTopicByAid($aid,$this->userInfo['uid'], $this->userInfo['isadmin']);
+    //$data['info']['intro'] = strip_tags($data['info']['intro']);
+    $preg_replace = array(
+    array('from'=>'#<a[^>]+>#Uis','to'=>'')
+    ,array('from'=>'#</a>#Uis','to'=>'')
+    
+    );
+    foreach($preg_replace as &$v){
+      $data['info']['intro'] = preg_replace($v['from'],$v['to'],$data['info']['intro']);
+    }
     $data['info']['ptime']=date('Y:m:d', $data['info']['ptime']);
     $data['info']['utime'] = date('Y/m/d', $data['info']['utime']);
     $this->_rewrite_article_url($data['info']);
@@ -165,6 +174,7 @@ class Maindex extends Usrbase {
     $title = $data['info']['name'];
     $seo_description = mb_substr(trim(strip_tags($data['info']['intro'])),0,128);
     // not VIP Admin check verify
+/*
     $emu_aid = isset($_COOKIE['hk8_verify_topic_dw'])?strcode($_COOKIE['hk8_verify_topic_dw'],false):'';
     $emu_aid = explode("\t",$emu_aid);
     $emu_aid = $emu_aid[0];
@@ -175,6 +185,7 @@ class Maindex extends Usrbase {
        $this->load->library('verify');
        $verifycode = $this->verify->show();
     }
+*/
     $topic_hot = $this->mem->get('topic_hot'.$cid);
     if(empty($topic_hot)){
       $topic_hot = array();
@@ -254,21 +265,23 @@ var_dump($list);exit;
 //var_dump($_SERVER);exit;
     $url = $this->viewData['login_url'].urlencode($_SERVER['HTTP_REFERER']);
 //echo $url;exit;
-    redirect($url);
+    header('Location: '.$url);
+    exit;
   }
   public function loginout(){
     $this->session->unset_userdata('user_logindata');
     setcookie('hk8_auth','',time()-3600,'/');
     $url = $_SERVER['HTTP_REFERER'];
 //echo $url;exit;
-    redirect($url);
+    header('Location: '.$url);
+    exit;
   }
   public function crontab(){
     $lock = BASEPATH.'/../crontab_loc.txt';
     if(file_exists($lock) && time()-filemtime($lock)<6*3600){
        return false;
     }
-    $this->emulemodel->autoSetVideoOnline(3);
+    $this->emulemodel->autoSetVideoOnline(1);
     $this->emulemodel->setCateVideoTotal();
     file_put_contents($lock,'');
     chmod($lock,0777);

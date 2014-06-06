@@ -15,7 +15,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-43439571-4', 'hacktea8.com');
+  ga('create', 'UA-43439571-4', 'emubt.com');
   ga('send', 'pageview');
 
 </script>
@@ -29,7 +29,6 @@
         <div class="top_ad l_left">
 <!-- 468-60 --></div>
         <div class="top_login l_right" id="userstat">
-<span>
    <div id="user_login">
    <span class="user">Œ</span>
    <div class="iconList" style="display: none;">
@@ -47,7 +46,7 @@
 <?php if(0){?>
 <a href="/yuanchuangxiaohua/details.asp" target="_blank">发表笑话,赚取奖金</a> |  
 <?php }?>
-</span><br>
+<br>
  <a href="javascript:void(0);" target="_blank"><img src="<?php echo $cdn_url;?>/public/images/fbjoke.gif?v=<?php echo $version;?>" alt="发表笑话" border="0"></a>
 </div>
         <div class="clear"></div>

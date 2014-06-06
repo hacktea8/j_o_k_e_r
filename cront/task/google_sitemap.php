@@ -15,7 +15,7 @@ class model{
   public function getList($page = 1,$limit = 100){
     $start = $page* $limit;
     $where = '';
-    $sql = sprintf('SELECT `id`,`utime` FROM '.$this->db->getTable('emule_article').' WHERE `flag`=1 AND `onlinedate`<=%d %s  LIMIT %d,%d',date('Ymd'),$where,$start,$limit);
+    $sql = sprintf('SELECT `id`,`utime` FROM '.$this->db->getTable('emule_article').' WHERE `flag`=1 AND `onlinedate`<=%d AND `onlinedate`>0 %s  LIMIT %d,%d',date('Ymd'),$where,$start,$limit);
      return $this->db->result_array($sql);
   }
   public function addIndex($data = array()){
@@ -52,7 +52,7 @@ class model{
 }
 
 $type = 1;
-$base_url = 'http://jok.hacktea8.com/';
+$base_url = 'http://jok.emubt.com/';
 $count = 1;
 $countLimit = 30000;
 $model = new model();

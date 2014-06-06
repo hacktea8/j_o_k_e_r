@@ -67,6 +67,7 @@ function getinfodetail(&$data){
   foreach($pregreplace as $val){
     $data['intro']=preg_replace($val['from'],$val['to'],$data['intro']);
   }
+  //$data['intro']= strip_tags($data['intro']);
   $data['intro']=trim($data['intro']);
   if(!$data['name'] || !$data['intro']){
      echo "抓取失败 $data[ourl] \r\n";

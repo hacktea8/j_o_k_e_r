@@ -413,8 +413,7 @@ a:hover{ text-decoration:underline; color:#FF3300;font-size:14px;}
 
 /* 头部菜单样式 */
 
-
-.top{font-size:12px;background:url(/public/images/banner_bg.jpg);background-repeat: repeat-x;}
+/*
 .top_logo{width:300px; padding-top:1px; height:87px;}
 .top_ad{width:300px;text-align:center; padding-top:14px;}
 .top_ad img{ width:468px; height:60px;}
@@ -451,7 +450,7 @@ a:hover{ text-decoration:underline; color:#FF3300;font-size:14px;}
 .top_menu_fyb li b{ width:92px; height:23px; float: left; text-align:center; line-height:23px; padding-top:2px;}
 .top_menu_fyb li b a,.top_menu_fyb li b a:visited{ font-size:14px; color:#40A40D; text-decoration:none; font-weight:bold;}
 .top_menu_fyb li b a:hover{ font-size:14px; color:#ff3300; text-decoration:underline; font-weight:bold;}
-
+*/
 
 
 
