@@ -106,6 +106,11 @@ class Maindex extends Usrbase {
   public function lists($cid,$order = 0,$page = 1){
     $page = intval($page);
     $cid = intval($cid);
+    if($cid <1){
+      header('HTTP/1.1 301 Moved Permanently');
+      header('Location: /');
+      exit;
+    }
     $order = intval($order);
     $page = $page > 0 ? $page: 1;
     if($page < 11){
@@ -149,6 +154,11 @@ class Maindex extends Usrbase {
   }
   public function topic($aid){
     $aid = intval($aid);
+    if($aid <1){
+      header('HTTP/1.1 301 Moved Permanently');
+      header('Location: /');
+      exit;
+    }
     $data = $this->emulemodel->getEmuleTopicByAid($aid,$this->userInfo['uid'], $this->userInfo['isadmin']);
     //$data['info']['intro'] = strip_tags($data['info']['intro']);
     $preg_replace = array(

@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title><?php echo $seo_title,'_',$web_title;?>-左右快捷键可切换笑话_Jok.HackTea8.Com</title>
+<title><?php echo $seo_title,'_',$web_title;?>-左右快捷键可切换笑话_Jok.EmuBt.Com</title>
 <meta name="keywords" content="<?php echo $seo_keywords,',',$web_title;?>" />
 <meta name="description" content="<?php echo $seo_title,'-',$web_title,$seo_description;?>" />
 <link href="<?php echo $cdn_url;?>/public/css/global.css?v=<?php echo $version;?>" rel="stylesheet" type="text/css" />
