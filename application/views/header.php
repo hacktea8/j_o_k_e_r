@@ -19,9 +19,10 @@
   ga('send', 'pageview');
 
 </script>
+<script language="javascript" src="<?php echo $cdn_url;?>/public/js/global.js?v=<?php echo $version;?>"></script>
+<script type="text/javascript" src="<?php echo $cdn_url;?>/public/js/lanage.js?v=<?php echo $version;?>"></script>
 </head>
 <body>
-<script language="javascript" src="<?php echo $cdn_url;?>/public/js/global.js?v=<?php echo $version;?>"></script>
 <!--网站头部开始-->
 <div class="main">
 	<div class="top">
@@ -47,7 +48,7 @@
 <a href="/yuanchuangxiaohua/details.asp" target="_blank">发表笑话,赚取奖金</a> |  
 <?php }?>
 <br>
- <a href="javascript:void(0);" target="_blank"><img src="<?php echo $cdn_url;?>/public/images/fbjoke.gif?v=<?php echo $version;?>" alt="发表笑话" border="0"></a>
+<a style="color: blue;font-size: medium;" href="javascript:transformLan();" id="a-lang" title="點擊以繁體中文>方式浏覽" name="a-lang">繁體中文切換</a> <a href="javascript:void(0);" target="_blank"><img src="<?php echo $cdn_url;?>/public/images/fbjoke.gif?v=<?php echo $version;?>" alt="发表笑话" border="0"></a>
 </div>
         <div class="clear"></div>
         <div class="top_menu">
