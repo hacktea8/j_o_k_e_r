@@ -221,9 +221,10 @@ class Maindex extends Usrbase {
     $q = urldecode($q);
     $q = htmlentities($q);
     $page = intval($page);
-    $page = $page < 1 ? 1: $page;
+    $page = $page -1;
+    $page = $page < 0 ? 0: $page;
     $list = array();
-    $pageSize = 25;
+    $pageSize = 12;
     if($q){
       $this->load->library('yunsearchapi');
       $opt = array('query'=>$q,'start'=>$page,'hits'=>$pageSize);
