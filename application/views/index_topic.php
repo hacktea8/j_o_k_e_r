@@ -80,6 +80,7 @@ if (event.keyCode==37)
 location=prevpage; 
 } 
 }  
+window.setTimeout(function(){$.get('/ajaxapi/article_pv/<?php echo $info['id'];?>')},5000);
 --></script>
 
 </div>
