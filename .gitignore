@@ -1,9 +1,8 @@
 */config/development
 */logs/log-*.php
 */logs/!index.html
-webhtmlcache/!index.html
+webhtmlcache/
 *.swo
 *.swp
 *.sql*
 *.bak
-*/cache/!index.html
