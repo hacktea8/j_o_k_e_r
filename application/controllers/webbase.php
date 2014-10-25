@@ -11,7 +11,9 @@ class Webbase extends CI_Controller {
   public $adminUidList = array(811);
   protected $_c = 'index'; 
   protected $_a = 'index'; 
-  
+  static protected $static_html = '1';
+  public $robot = 0;
+   
   public function __construct(){
     parent::__construct();
     $this->load->library('memcached');
@@ -52,6 +54,7 @@ class Webbase extends CI_Controller {
                 ,'version'=>20140109,'login_url'=>$this->config->item('login_url'),'uinfo'=>$this->userInfo
                 ,'_c'=>$this->_c,'_a'=>$this->_a
     ));
+    $this->checkIsrobot();
   }
   
   protected function checkLogin(){
@@ -125,5 +128,10 @@ class Webbase extends CI_Controller {
        }
     }
     return $return;
+  }
+  protected function checkIsrobot(){
+    if( isset($_SERVER['HTTP_USER_AGENT']) && false !== stripos($_SERVER['HTTP_USER_AGENT'],'spider')){
+      $this->robot = 1;
+    }
   }
 }

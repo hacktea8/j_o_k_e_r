@@ -204,14 +204,30 @@ class Maindex extends Usrbase {
       $this->mem->set($key,$topic_hot,$this->expirettl['3h']);
     }
     $isCollect = $this->emulemodel->getUserIscollect($this->userInfo['uid'],$data['info']['id']);
-    $this->assign(array('seo_description'=>$seo_description,'isCollect'=>$isCollect,'topic_hot'=>$topic_hot,'verifycode'=>$verifycode,'seo_title'=>$title,'seo_keywords'=>$keywords,'cid'=>$cid,'cpid'=>$cpid,'info'=>$data['info'],'postion'=>$data['postion'],'aid'=>$aid)); 
+    $this->assign(array(
+    'seo_description'=>$seo_description,'isCollect'=>$isCollect
+    ,'topic_hot'=>$topic_hot,'verifycode'=>$verifycode,'seo_title'=>$title
+    ,'seo_keywords'=>$keywords,'cid'=>$cid,'cpid'=>$cpid,'info'=>$data['info']
+    ,'postion'=>$data['postion'],'aid'=>$aid
+    )); 
 //echo '<pre>';var_dump($data['info']);exit;
+/*
     $ip = $this->input->ip_address();
     $key = sprintf('hitslog:%s:%d',$ip,$aid);
     if(!$this->redis->exists($key)){
        $this->redis->set($key, 1, $this->expirettl['6h']);
     }
+*/
     $this->view('index_topic');
+    if( self::$static_html ){
+      $cache_file = CACHEDIR.($aid%10).'/'.$aid.'.html';
+      $cache_dir = dirname($cache_file);
+      makedir($cache_dir,0777);
+      $output = $this->output->get_output();
+      file_put_contents($cache_file,$output);
+      @chmod($cache_file,0777);
+
+    }
   }
   public function tpl(){
     $this->load->view('index_tpl',$this->viewData);

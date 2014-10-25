@@ -10,7 +10,7 @@ class Memcached{
   protected $_memcache_conf = array(
 			      'default' => array(
 			      'hostname'=> '127.0.0.1',
-			      'port'=> 3721,
+			      'port'=> 11211,
 			      'weight'=> 1
 	  	                                )
 				    );
@@ -18,7 +18,7 @@ class Memcached{
 // --------------------------------------------------------
   public function __construct($config = array()){
      $this->_memcached = new Memcache;
-//     $this->_memcached->connect('127.0.0.1', 3721);
+//     $this->_memcached->connect('127.0.0.1', 11211);
      foreach($this->_memcache_conf as $cache_server){
      $this->_memcached->addServer(
                      $cache_server['hostname'], $cache_server['port'], $cache_server['weight']);
