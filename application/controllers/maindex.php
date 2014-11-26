@@ -219,7 +219,7 @@ class Maindex extends Usrbase {
     }
 */
     $this->view('index_topic');
-    if( self::$static_html ){
+    if( self::$robot && self::$static_html ){
       $cache_file = CACHEDIR.($aid%10).'/'.$aid.'.html';
       $cache_dir = dirname($cache_file);
       makedir($cache_dir,0777);
